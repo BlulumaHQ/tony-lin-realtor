@@ -4,6 +4,8 @@ import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
+import { LeadForm } from "../components/LeadForm";
+import { Button } from "../components/ui/button";
 import { listings } from "../data/listings";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 
@@ -74,9 +76,11 @@ function HomePage() {
         <TrustBar />
         <About />
         <FeaturedListings />
+        <ValuationSection />
         <FocusBlocks />
         <BuyerSeller />
         <MarketAreas />
+        <RecentResults />
         <WhyTony />
         <ContactCTA />
       </main>
@@ -95,27 +99,15 @@ function Hero() {
             Greater Vancouver · UniLife Realty Inc.
           </p>
           <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-foreground md:text-6xl lg:text-7xl">
-            Greater Vancouver<br />
-            <span className="text-primary">Real Estate Advisor.</span>
+            Buy, sell, or invest in Greater Vancouver — with clear, bilingual guidance.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-foreground/75">
-            Commercial, residential, and land real estate representation with a
-            practical, relationship-first approach across Greater Vancouver and
-            the Fraser Valley.
+            Get practical, relationship-first representation for commercial,
+            residential, and land decisions across Greater Vancouver and the Fraser Valley.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="rounded-full bg-foreground px-7 py-3.5 text-sm font-medium text-background transition hover:bg-primary hover:text-primary-foreground"
-            >
-              Book a Consultation
-            </Link>
-            <Link
-              to="/listings"
-              className="rounded-full border border-foreground/30 px-7 py-3.5 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary"
-            >
-              View Featured Listings
-            </Link>
+            <Button asChild size="lg" className="rounded-full"><Link to="/contact">Book a Consultation</Link></Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full"><Link to="/listings">View Listings</Link></Button>
           </div>
           <dl className="mt-12 grid max-w-lg grid-cols-2 gap-x-8 gap-y-3 text-sm sm:grid-cols-4">
             <div>
@@ -238,7 +230,7 @@ function FeaturedListings() {
           <div>
             <p className="section-label"><span className="gold-divider mr-3" />Featured Listings</p>
             <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
-              Current opportunities & recent representation.
+              Current opportunities for your next move.
             </h2>
           </div>
           <Link
@@ -250,7 +242,7 @@ function FeaturedListings() {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {listings.map((l) => (
+          {listings.filter((listing) => listing.status === "Active").map((l) => (
             <ListingCard key={l.id} listing={l} />
           ))}
         </div>
