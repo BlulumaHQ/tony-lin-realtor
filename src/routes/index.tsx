@@ -40,13 +40,7 @@ export const Route = createFileRoute("/")({
           email: CONTACT.email,
           image: tonyPortrait.url,
           knowsLanguage: ["English", "Mandarin"],
-          areaServed: [
-            "Greater Vancouver",
-            "Fraser Valley",
-            "Richmond",
-            "Vancouver",
-            "Surrey",
-          ],
+          areaServed: ["Greater Vancouver", "Fraser Valley", "Richmond", "Vancouver", "Surrey"],
           worksFor: {
             "@type": "RealEstateAgent",
             name: CONTACT.brokerage,
@@ -102,30 +96,44 @@ function Hero() {
             Buy, sell, or invest in Greater Vancouver — with clear, bilingual guidance.
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-foreground/75">
-            Get practical, relationship-first representation for commercial,
-            residential, and land decisions across Greater Vancouver and the Fraser Valley.
+            Get practical, relationship-first representation for commercial, residential, and land
+            decisions across Greater Vancouver and the Fraser Valley.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="rounded-full"><Link to="/contact">Book a Consultation</Link></Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full"><Link to="/listings">View Listings</Link></Button>
+            <Button asChild size="lg" className="rounded-full">
+              <Link to="/contact">Book a Consultation</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <Link to="/listings">View Listings</Link>
+            </Button>
           </div>
           <dl className="mt-12 grid max-w-lg grid-cols-2 gap-x-8 gap-y-3 text-sm sm:grid-cols-4">
             <div>
-              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">Role</dt>
+              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
+                Role
+              </dt>
               <dd className="mt-1 font-medium">REALTOR®</dd>
             </div>
             <div>
-              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">Brokerage</dt>
+              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
+                Brokerage
+              </dt>
               <dd className="mt-1 font-medium">UniLife Realty</dd>
             </div>
             <div>
-              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">Languages</dt>
+              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
+                Languages
+              </dt>
               <dd className="mt-1 font-medium">EN · 中文</dd>
             </div>
             <div>
-              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">Direct</dt>
+              <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
+                Direct
+              </dt>
               <dd className="mt-1 font-medium">
-                <a href={CONTACT.phoneHref} className="hover:text-primary">{CONTACT.phone}</a>
+                <a href={CONTACT.phoneHref} className="hover:text-primary">
+                  {CONTACT.phone}
+                </a>
               </dd>
             </div>
           </dl>
@@ -133,7 +141,10 @@ function Hero() {
 
         <div className="fade-up md:col-span-5">
           <div className="relative mx-auto max-w-sm">
-            <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-primary/30 to-transparent blur-2xl" aria-hidden />
+            <div
+              className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-primary/30 to-transparent blur-2xl"
+              aria-hidden
+            />
             <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
               <img
                 src={tonyPortrait.url}
@@ -184,23 +195,25 @@ function About() {
     <section id="about" className="mx-auto max-w-7xl px-6 py-24">
       <div className="grid gap-14 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="section-label"><span className="gold-divider mr-3" />About Tony</p>
+          <p className="section-label">
+            <span className="gold-divider mr-3" />
+            About Tony
+          </p>
           <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
             Practical guidance for the decisions that matter.
           </h2>
         </div>
         <div className="md:col-span-7">
           <p className="text-lg leading-relaxed text-foreground/80">
-            Tony Lin is a REALTOR® with UniLife Realty Inc., serving clients
-            across Greater Vancouver and the Fraser Valley. His public listing
-            portfolio includes commercial retail, agricultural land, residential
-            land, and Vancouver West residential property experience.
+            Tony Lin is a REALTOR® with UniLife Realty Inc., serving clients across Greater
+            Vancouver and the Fraser Valley. His public listing portfolio includes commercial
+            retail, agricultural land, residential land, and Vancouver West residential property
+            experience.
           </p>
           <p className="mt-5 text-lg leading-relaxed text-foreground/80">
-            Tony works with English and Mandarin-speaking clients and provides
-            practical real estate guidance for buyers, sellers, investors, and
-            property owners who need clear advice before making major property
-            decisions.
+            Tony works with English and Mandarin-speaking clients and provides practical real estate
+            guidance for buyers, sellers, investors, and property owners who need clear advice
+            before making major property decisions.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <Stat label="Brokerage" value="UniLife Realty Inc." />
@@ -228,26 +241,30 @@ function FeaturedListings() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="section-label"><span className="gold-divider mr-3" />Featured Listings</p>
+            <p className="section-label">
+              <span className="gold-divider mr-3" />
+              Featured Listings
+            </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
               Current opportunities for your next move.
             </h2>
           </div>
-          <Link
-            to="/listings"
-            className="text-sm font-medium text-primary hover:underline"
-          >
+          <Link to="/listings" className="text-sm font-medium text-primary hover:underline">
             View all listings →
           </Link>
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {listings.filter((listing) => listing.status === "Active").map((l) => (
-            <ListingCard key={l.id} listing={l} />
-          ))}
+          {listings
+            .filter((listing) => listing.status === "Active")
+            .map((l) => (
+              <ListingCard key={l.id} listing={l} />
+            ))}
         </div>
 
-        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-muted-foreground">{DISCLAIMER}</p>
+        <p className="mt-10 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          {DISCLAIMER}
+        </p>
       </div>
     </section>
   );
@@ -258,16 +275,21 @@ function ValuationSection() {
     <section className="mx-auto max-w-7xl px-6 py-24">
       <div className="grid items-start gap-12 rounded-3xl border border-border bg-card p-8 shadow-sm md:grid-cols-12 md:p-14">
         <div className="md:col-span-5">
-          <p className="section-label"><span className="gold-divider mr-3" />Free Property Valuation</p>
+          <p className="section-label">
+            <span className="gold-divider mr-3" />
+            Free Property Valuation
+          </p>
           <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
             What&apos;s your property worth in today&apos;s market?
           </h2>
           <p className="mt-5 text-foreground/75">
-            Get a no-obligation valuation and current market insight for your home,
-            commercial unit, or land — usually within one business day.
+            Get a no-obligation valuation and current market insight for your home, commercial unit,
+            or land — usually within one business day.
           </p>
         </div>
-        <div className="md:col-span-7"><LeadForm source="valuation" /></div>
+        <div className="md:col-span-7">
+          <LeadForm source="valuation" />
+        </div>
       </div>
     </section>
   );
@@ -294,7 +316,17 @@ function FocusBlocks() {
   );
 }
 
-function FocusCard({ eyebrow, title, body, visual }: { eyebrow: string; title: string; body: string; visual: string }) {
+function FocusCard({
+  eyebrow,
+  title,
+  body,
+  visual,
+}: {
+  eyebrow: string;
+  title: string;
+  body: string;
+  visual: string;
+}) {
   return (
     <article className="overflow-hidden rounded-2xl border border-border bg-card">
       <div className={`aspect-[16/9] ${visual}`} />
@@ -333,13 +365,19 @@ function BuyerSeller() {
   return (
     <section className="bg-[color:var(--graphite)] py-24 text-[color:var(--ivory)]">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="section-label"><span className="gold-divider mr-3" />Services</p>
+        <p className="section-label">
+          <span className="gold-divider mr-3" />
+          Services
+        </p>
         <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
           A focused process for buyers, sellers, and investors.
         </h2>
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {services.map((s) => (
-            <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur">
+            <div
+              key={s.label}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur"
+            >
               <p className="text-xs uppercase tracking-[0.22em] text-primary">{s.label}</p>
               <h3 className="mt-3 font-serif text-2xl">{s.title}</h3>
               <ul className="mt-6 space-y-3 text-sm text-white/80">
@@ -371,13 +409,16 @@ function MarketAreas() {
     <section className="mx-auto max-w-7xl px-6 py-24">
       <div className="grid items-start gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
-          <p className="section-label"><span className="gold-divider mr-3" />Market Areas</p>
+          <p className="section-label">
+            <span className="gold-divider mr-3" />
+            Market Areas
+          </p>
           <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
             Your markets, clearly understood.
           </h2>
           <p className="mt-5 text-foreground/75">
-            Navigate the Lower Mainland with relevant public listing experience in
-            Richmond, Vancouver West, and Surrey.
+            Navigate the Lower Mainland with relevant public listing experience in Richmond,
+            Vancouver West, and Surrey.
           </p>
         </div>
         <ul className="md:col-span-7 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -400,25 +441,46 @@ function RecentResults() {
   if (!sold) return null;
 
   const placeholders = [
-    { name: "Client name", area: "Neighbourhood", quote: "Add a verified client testimonial here." },
-    { name: "Client name", area: "Neighbourhood", quote: "Add a verified client testimonial here." },
-    { name: "Client name", area: "Neighbourhood", quote: "Add a verified client testimonial here." },
+    {
+      name: "Client name",
+      area: "Neighbourhood",
+      quote: "Add a verified client testimonial here.",
+    },
+    {
+      name: "Client name",
+      area: "Neighbourhood",
+      quote: "Add a verified client testimonial here.",
+    },
+    {
+      name: "Client name",
+      area: "Neighbourhood",
+      quote: "Add a verified client testimonial here.",
+    },
   ];
 
   return (
     <section className="bg-card/60 py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="section-label"><span className="gold-divider mr-3" />Recent Results</p>
+        <p className="section-label">
+          <span className="gold-divider mr-3" />
+          Recent Results
+        </p>
         <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight text-foreground md:text-5xl">
           Closed representation, grounded in careful execution.
         </h2>
         <div className="mt-12 grid items-center gap-8 rounded-3xl border border-border bg-background p-6 md:grid-cols-2 md:p-10">
           <div className="img-luxury aspect-[16/10] rounded-2xl" />
           <div>
-            <span className="rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-secondary-foreground">Sold</span>
-            <p className="mt-5 text-xs uppercase tracking-[0.18em] text-primary">Closed representation · MLS® {sold.mls}</p>
+            <span className="rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-secondary-foreground">
+              Sold
+            </span>
+            <p className="mt-5 text-xs uppercase tracking-[0.18em] text-primary">
+              Closed representation · MLS® {sold.mls}
+            </p>
             <h3 className="mt-3 font-serif text-3xl text-foreground">{sold.address}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{sold.area} · {sold.city}</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {sold.area} · {sold.city}
+            </p>
             <p className="mt-5 font-serif text-2xl text-foreground">{sold.price}</p>
             <p className="mt-4 text-sm leading-relaxed text-foreground/75">{sold.description}</p>
           </div>
@@ -427,14 +489,23 @@ function RecentResults() {
         <div className="mt-16 flex items-end justify-between gap-6">
           <div>
             <p className="section-label">Client Testimonials</p>
-            <h3 className="mt-3 font-serif text-3xl text-foreground">Real feedback belongs here.</h3>
+            <h3 className="mt-3 font-serif text-3xl text-foreground">
+              Real feedback belongs here.
+            </h3>
           </div>
-          <p className="rounded-full border border-primary px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-primary">Placeholders</p>
+          <p className="rounded-full border border-primary px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-primary">
+            Placeholders
+          </p>
         </div>
         <div className="mt-7 grid gap-6 md:grid-cols-3">
           {placeholders.map((item, index) => (
-            <article key={index} className="rounded-2xl border border-dashed border-border bg-background p-7">
-              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-primary">Placeholder — replace before publishing</p>
+            <article
+              key={index}
+              className="rounded-2xl border border-dashed border-border bg-background p-7"
+            >
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-primary">
+                Placeholder — replace before publishing
+              </p>
               <p className="mt-5 font-serif text-xl text-foreground">“{item.quote}”</p>
               <p className="mt-6 text-sm font-medium text-foreground">{item.name}</p>
               <p className="text-xs text-muted-foreground">{item.area}</p>
@@ -448,15 +519,30 @@ function RecentResults() {
 
 function WhyTony() {
   const items = [
-    { t: "Bilingual service", b: "Clear communication for English and Mandarin-speaking clients throughout the process." },
-    { t: "Multi-asset experience", b: "Public listing experience across commercial retail, agricultural land, residential land, and Vancouver West homes." },
-    { t: "Brokerage support", b: "Backed by UniLife Realty Inc., part of the Royal Pacific Realty Group — established infrastructure and conveyancing." },
-    { t: "Practical guidance", b: "Direct, evidence-based advice — no pressure, no overpromising." },
+    {
+      t: "Bilingual service",
+      b: "Clear communication for English and Mandarin-speaking clients throughout the process.",
+    },
+    {
+      t: "Multi-asset experience",
+      b: "Public listing experience across commercial retail, agricultural land, residential land, and Vancouver West homes.",
+    },
+    {
+      t: "Brokerage support",
+      b: "Backed by UniLife Realty Inc., part of the Royal Pacific Realty Group — established infrastructure and conveyancing.",
+    },
+    {
+      t: "Practical guidance",
+      b: "Direct, evidence-based advice — no pressure, no overpromising.",
+    },
   ];
   return (
     <section className="py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="section-label"><span className="gold-divider mr-3" />Why Work With Tony</p>
+        <p className="section-label">
+          <span className="gold-divider mr-3" />
+          Why Work With Tony
+        </p>
         <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight text-foreground md:text-5xl">
           A trusted advisor across asset classes.
         </h2>
@@ -479,13 +565,16 @@ function ContactCTA() {
       <div className="overflow-hidden rounded-3xl border border-border bg-[color:var(--charcoal)] px-8 py-14 text-[color:var(--ivory)] md:px-14 md:py-20">
         <div className="grid items-center gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
-            <p className="section-label"><span className="gold-divider mr-3" />Let's talk</p>
+            <p className="section-label">
+              <span className="gold-divider mr-3" />
+              Let's talk
+            </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight md:text-5xl">
               Considering a property decision in Greater Vancouver?
             </h2>
             <p className="mt-5 max-w-xl text-white/75">
-               Get a no-pressure review of your situation and practical next steps —
-               in English or Mandarin.
+              Get a no-pressure review of your situation and practical next steps — in English or
+              Mandarin.
             </p>
           </div>
           <div className="md:col-span-5">

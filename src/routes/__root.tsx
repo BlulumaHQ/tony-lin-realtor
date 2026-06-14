@@ -88,13 +88,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Tony Lin — UniLife Realty Inc." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Tony Lin REALTOR® | UniLife Realty Inc. | Greater Vancouver Real Estate" },
-      { name: "twitter:title", content: "Tony Lin REALTOR® | UniLife Realty Inc. | Greater Vancouver Real Estate" },
-      { name: "description", content: "A premium real estate website showcasing Tony Lin's listings, services, and contact information." },
-      { property: "og:description", content: "A premium real estate website showcasing Tony Lin's listings, services, and contact information." },
-      { name: "twitter:description", content: "A premium real estate website showcasing Tony Lin's listings, services, and contact information." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/898aed6e-bd2a-45de-bdfd-0d475dd9596d/id-preview-7771cb7d--525031ca-39b1-486c-ac52-6557e7ba8394.lovable.app-1780776641183.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/898aed6e-bd2a-45de-bdfd-0d475dd9596d/id-preview-7771cb7d--525031ca-39b1-486c-ac52-6557e7ba8394.lovable.app-1780776641183.png" },
+      {
+        property: "og:title",
+        content: "Tony Lin REALTOR® | UniLife Realty Inc. | Greater Vancouver Real Estate",
+      },
+      {
+        name: "twitter:title",
+        content: "Tony Lin REALTOR® | UniLife Realty Inc. | Greater Vancouver Real Estate",
+      },
+      {
+        name: "description",
+        content:
+          "A premium real estate website showcasing Tony Lin's listings, services, and contact information.",
+      },
+      {
+        property: "og:description",
+        content:
+          "A premium real estate website showcasing Tony Lin's listings, services, and contact information.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A premium real estate website showcasing Tony Lin's listings, services, and contact information.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/898aed6e-bd2a-45de-bdfd-0d475dd9596d/id-preview-7771cb7d--525031ca-39b1-486c-ac52-6557e7ba8394.lovable.app-1780776641183.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/898aed6e-bd2a-45de-bdfd-0d475dd9596d/id-preview-7771cb7d--525031ca-39b1-486c-ac52-6557e7ba8394.lovable.app-1780776641183.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
