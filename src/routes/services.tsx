@@ -9,7 +9,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Commercial, residential, land, and Mandarin real estate services in Greater Vancouver and the Fraser Valley.",
+          "Commercial, residential, land, and 國語 real estate services in Greater Vancouver and the Fraser Valley.",
       },
       { property: "og:title", content: "Services — Tony Lin REALTOR®" },
       { property: "og:description", content: "Buying, selling, commercial, land, and bilingual real estate guidance." },
@@ -43,8 +43,8 @@ const services = [
   },
   {
     label: "05",
-    title: "Mandarin Real Estate Service",
-    body: "For Mandarin-speaking clients who prefer clearer communication through the buying or selling process.",
+    title: "國語 Real Estate Service",
+    body: "For 國語-speaking clients who prefer clearer communication through the buying or selling process.",
   },
 ];
 

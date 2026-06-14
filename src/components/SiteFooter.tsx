@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
-import { LeadForm } from "./LeadForm";
+import { AlertsForm } from "./AlertsForm";
 import { SocialLinks } from "./SocialLinks";
 
 export function SiteFooter() {
@@ -12,14 +12,14 @@ export function SiteFooter() {
           <div className="mb-7 max-w-2xl">
             <p className="section-label">
               <span className="gold-divider mr-3" />
-              Free Property Valuation
+              Market Updates
             </p>
-            <h2 className="mt-3 font-serif text-3xl">What’s your property worth?</h2>
+            <h2 className="mt-3 font-serif text-3xl">Get new-listing &amp; market alerts</h2>
             <p className="mt-2 text-sm text-foreground/70">
-              Request a no-obligation valuation for your home, commercial unit, or land.
+              Receive concise updates on relevant opportunities and local market activity.
             </p>
+            <AlertsForm />
           </div>
-          <LeadForm source="valuation" compact />
         </div>
         <div className="grid gap-12 md:grid-cols-3">
           <div>
@@ -29,7 +29,7 @@ export function SiteFooter() {
             </p>
             <p className="mt-6 text-sm text-white/70">
               Greater Vancouver real estate representation across commercial, residential, and land.
-              English & Mandarin service.
+              English & 國語 service.
             </p>
             <div className="mt-6">
               <SocialLinks light />

@@ -4,6 +4,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import { LeadForm } from "../components/LeadForm";
 import { SocialLinks, SOCIAL } from "../components/SocialLinks";
 import { CONTACT } from "../lib/contact";
+import { Building2, Languages, Mail, Phone } from "lucide-react";
 import instagramQr from "../assets/instagram-qr.jpeg.asset.json";
 import xiaohongshuQr from "../assets/xiaohongshu-qr.jpeg.asset.json";
 
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Reach Tony Lin, REALTOR® at UniLife Realty Inc. Call 604-700-3946 or email tony@tony-lin.ca. English and Mandarin service.",
+          "Reach Tony Lin, REALTOR® at UniLife Realty Inc. Call 604-700-3946 or email tony@tony-lin.ca. English and 國語 service.",
       },
       { property: "og:title", content: "Contact Tony Lin, REALTOR®" },
       { property: "og:description", content: "Book a no-pressure real estate consultation." },
@@ -45,15 +46,18 @@ function ContactPage() {
                 For time-sensitive enquiries, call directly.
               </p>
 
-              <div className="mt-10 space-y-5">
-                <ContactBlock label="Direct" value={CONTACT.phone} href={CONTACT.phoneHref} />
+              <div className="mt-10 space-y-4">
+                <ContactBlock icon={Phone} label="Direct" value={CONTACT.phone} href={CONTACT.phoneHref} />
                 <ContactBlock
+                  icon={Mail}
                   label="Email"
                   value={CONTACT.email}
                   href={`mailto:${CONTACT.email}`}
                 />
-                <ContactBlock label="Languages" value={CONTACT.languages} />
-                <div className="rounded-xl border border-border bg-card p-5">
+                <ContactBlock icon={Languages} label="Languages" value={CONTACT.languages} />
+                <div className="flex gap-4 rounded-xl border border-border bg-card p-5">
+                  <Building2 className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+                  <div>
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-primary">Office</p>
                   <p className="mt-2 font-serif text-base text-foreground">{CONTACT.brokerage}</p>
                   <p className="text-sm text-foreground/75">{CONTACT.officeAddress}</p>
@@ -64,8 +68,8 @@ function ContactPage() {
                   >
                     {CONTACT.officePhone}
                   </a>
+                  </div>
                 </div>
-                <FollowCard />
               </div>
             </div>
 
@@ -73,6 +77,7 @@ function ContactPage() {
               <LeadForm source="contact" />
             </div>
           </div>
+          <div className="mt-16"><FollowCard /></div>
         </section>
       </main>
       <SiteFooter />
@@ -97,7 +102,7 @@ function FollowCard() {
   ];
   return (
     <div className="rounded-xl border border-border bg-card p-5">
-      <p className="text-[0.62rem] uppercase tracking-[0.22em] text-primary">Follow Tony / 關注</p>
+      <p className="text-[0.62rem] uppercase tracking-[0.22em] text-primary">Follow Tony / 關注 Tony</p>
       <div className="mt-4">
         <SocialLinks />
       </div>
@@ -125,21 +130,21 @@ function FollowCard() {
   );
 }
 
-function ContactBlock({ label, value, href }: { label: string; value: string; href?: string }) {
+function ContactBlock({ icon: Icon, label, value, href }: { icon: typeof Phone; label: string; value: string; href?: string }) {
   const inner = (
-    <>
+    <><Icon className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden /><div>
       <p className="text-[0.62rem] uppercase tracking-[0.22em] text-primary">{label}</p>
       <p className="mt-2 font-serif text-lg text-foreground">{value}</p>
-    </>
+    </div></>
   );
   return href ? (
     <a
       href={href}
-      className="block rounded-xl border border-border bg-card p-5 transition hover:border-primary"
+      className="flex gap-4 rounded-xl border border-border bg-card p-5 transition hover:border-primary"
     >
       {inner}
     </a>
   ) : (
-    <div className="rounded-xl border border-border bg-card p-5">{inner}</div>
+    <div className="flex gap-4 rounded-xl border border-border bg-card p-5">{inner}</div>
   );
 }
