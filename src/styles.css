@@ -179,4 +179,12 @@
       radial-gradient(120% 80% at 70% 20%, rgba(184,155,94,0.18), transparent 60%),
       linear-gradient(180deg, #f7f3ec 0%, #ece5d4 100%);
   }
+
+  .luxury-wave-bg {
+    background-color: var(--ivory);
+    background-image: linear-gradient(color-mix(in oklab, var(--ivory) 8%, transparent), color-mix(in oklab, var(--ivory) 8%, transparent)), url("./assets/gold-wave-background.jpg");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
