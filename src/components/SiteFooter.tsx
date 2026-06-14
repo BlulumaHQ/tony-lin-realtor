@@ -1,11 +1,26 @@
 import { Link } from "@tanstack/react-router";
 import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
+import { LeadForm } from "./LeadForm";
+import { SocialLinks } from "./SocialLinks";
 
 export function SiteFooter() {
   return (
     <footer className="mt-24 bg-[color:var(--charcoal)] text-[color:var(--ivory)]">
       <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mb-14 rounded-3xl border border-white/10 bg-background p-7 text-foreground md:p-10">
+          <div className="mb-7 max-w-2xl">
+            <p className="section-label">
+              <span className="gold-divider mr-3" />
+              Free Property Valuation
+            </p>
+            <h2 className="mt-3 font-serif text-3xl">What’s your property worth?</h2>
+            <p className="mt-2 text-sm text-foreground/70">
+              Request a no-obligation valuation for your home, commercial unit, or land.
+            </p>
+          </div>
+          <LeadForm source="valuation" compact />
+        </div>
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <p className="font-serif text-2xl">Tony Lin</p>
@@ -13,9 +28,12 @@ export function SiteFooter() {
               REALTOR<sup>®</sup> · {CONTACT.brokerage}
             </p>
             <p className="mt-6 text-sm text-white/70">
-              Greater Vancouver real estate representation across commercial,
-              residential, and land. English & Mandarin service.
+              Greater Vancouver real estate representation across commercial, residential, and land.
+              English & Mandarin service.
             </p>
+            <div className="mt-6">
+              <SocialLinks light />
+            </div>
             <img
               src={unilifeLogo.url}
               alt="UniLife Realty Inc. — Royal Pacific Realty Group"
@@ -56,11 +74,31 @@ export function SiteFooter() {
           <div className="text-sm">
             <p className="text-xs uppercase tracking-[0.22em] text-primary">Explore</p>
             <ul className="mt-4 grid grid-cols-2 gap-2 text-white/85">
-              <li><Link to="/" className="hover:text-primary">Home</Link></li>
-              <li><Link to="/listings" className="hover:text-primary">Listings</Link></li>
-              <li><Link to="/about" className="hover:text-primary">About</Link></li>
-              <li><Link to="/services" className="hover:text-primary">Services</Link></li>
-              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+              <li>
+                <Link to="/" className="hover:text-primary">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/listings" className="hover:text-primary">
+                  Listings
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-primary">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="hover:text-primary">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary">
+                  Contact
+                </Link>
+              </li>
             </ul>
 
             <p className="mt-8 text-xs uppercase tracking-[0.22em] text-primary">
