@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { MobileContactBar } from "../components/MobileContactBar";
 
 function NotFoundComponent() {
   return (
@@ -117,7 +118,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="pb-20 md:pb-0">
         {children}
         <Scripts />
       </body>
@@ -132,6 +133,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <MobileContactBar />
     </QueryClientProvider>
   );
 }

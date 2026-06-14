@@ -1,11 +1,21 @@
 import { Link } from "@tanstack/react-router";
 import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
+import { LeadForm } from "./LeadForm";
+import { SocialLinks } from "./SocialLinks";
 
 export function SiteFooter() {
   return (
     <footer className="mt-24 bg-[color:var(--charcoal)] text-[color:var(--ivory)]">
       <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mb-14 rounded-3xl border border-white/10 bg-background p-7 text-foreground md:p-10">
+          <div className="mb-7 max-w-2xl">
+            <p className="section-label"><span className="gold-divider mr-3" />Free Property Valuation</p>
+            <h2 className="mt-3 font-serif text-3xl">What’s your property worth?</h2>
+            <p className="mt-2 text-sm text-foreground/70">Request a no-obligation valuation for your home, commercial unit, or land.</p>
+          </div>
+          <LeadForm source="valuation" compact />
+        </div>
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <p className="font-serif text-2xl">Tony Lin</p>
@@ -16,6 +26,7 @@ export function SiteFooter() {
               Greater Vancouver real estate representation across commercial,
               residential, and land. English & Mandarin service.
             </p>
+            <div className="mt-6"><SocialLinks light /></div>
             <img
               src={unilifeLogo.url}
               alt="UniLife Realty Inc. — Royal Pacific Realty Group"
