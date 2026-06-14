@@ -7,6 +7,8 @@ import { LeadForm } from "../components/LeadForm";
 import { Button } from "../components/ui/button";
 import { listings } from "../data/listings";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
+import commercialFeature from "../assets/commercial-feature.jpg";
+import residentialFeature from "../assets/residential-feature.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -295,19 +297,19 @@ function ValuationSection() {
 
 function FocusBlocks() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="grid gap-8 md:grid-cols-2">
+    <section className="luxury-wave-bg px-6 py-24">
+      <div className="mx-auto grid max-w-7xl auto-rows-fr items-stretch gap-8 md:grid-cols-2">
         <FocusCard
           eyebrow="Commercial Real Estate"
           title="Retail, mixed-use & income property."
           body="For investors, business owners, and property holders looking at retail, mixed-use, or income-producing property opportunities across Metro Vancouver."
-          visual="img-retail"
+          image={commercialFeature}
         />
         <FocusCard
           eyebrow="Residential Real Estate"
           title="Family homes & investment houses."
           body="From Vancouver West to the Fraser Valley — guidance on neighbourhood selection, pricing strategy, and negotiation backed by market evidence."
-          visual="img-luxury"
+          image={residentialFeature}
         />
       </div>
     </section>
@@ -318,20 +320,25 @@ function FocusCard({
   eyebrow,
   title,
   body,
-  visual,
+  image,
 }: {
   eyebrow: string;
   title: string;
   body: string;
-  visual: string;
+  image: string;
 }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-border bg-card">
-      <div className={`aspect-[16/9] ${visual}`} />
-      <div className="p-8">
+    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card">
+      <img src={image} alt="" className="aspect-video w-full object-cover" loading="lazy" width={1920} height={1080} />
+      <div className="flex flex-1 flex-col items-center p-8 text-center">
         <p className="text-xs uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
         <h3 className="mt-3 font-serif text-2xl text-foreground">{title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-foreground/75">{body}</p>
+        <div className="mt-auto pt-6">
+          <Button asChild variant="outline" className="rounded-full">
+            <Link to="/services">Explore Services</Link>
+          </Button>
+        </div>
       </div>
     </article>
   );
@@ -404,8 +411,8 @@ function MarketAreas() {
     "Fraser Valley",
   ];
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="grid items-start gap-12 md:grid-cols-12">
+    <section className="luxury-wave-bg px-6 py-24">
+      <div className="mx-auto grid max-w-7xl items-start gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <p className="section-label">
             <span className="gold-divider mr-3" />

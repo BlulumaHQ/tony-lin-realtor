@@ -5,8 +5,8 @@ import { LeadForm } from "../components/LeadForm";
 import { SocialLinks, SOCIAL } from "../components/SocialLinks";
 import { CONTACT } from "../lib/contact";
 import { Building2, Languages, Mail, Phone } from "lucide-react";
-import instagramQr from "../assets/instagram-qr.jpeg.asset.json";
-import xiaohongshuQr from "../assets/xiaohongshu-qr.jpeg.asset.json";
+import instagramQr from "../assets/qr-instagram.png.asset.json";
+import xiaohongshuQr from "../assets/qr-xiaohongshu.png.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -31,7 +31,8 @@ function ContactPage() {
     <div className="min-h-dvh">
       <SiteHeader />
       <main>
-        <section className="mx-auto max-w-7xl px-6 py-20">
+        <section className="luxury-wave-bg px-6 py-20">
+          <div className="mx-auto max-w-7xl">
           <div className="grid gap-14 md:grid-cols-12">
             <div className="md:col-span-5">
               <p className="section-label">
@@ -78,6 +79,7 @@ function ContactPage() {
             </div>
           </div>
           <div className="mt-16"><FollowCard /></div>
+          </div>
         </section>
       </main>
       <SiteFooter />
@@ -88,7 +90,7 @@ function ContactPage() {
 function FollowCard() {
   const codes = [
     {
-      label: "Instagram",
+      label: "Instagram @tony.lin.realtor",
       href: SOCIAL.instagram,
       image: instagramQr.url,
       alt: "QR code for Tony Lin on Instagram",
@@ -101,26 +103,28 @@ function FollowCard() {
     },
   ];
   return (
-    <div className="rounded-xl border border-border bg-card p-5">
+    <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
       <p className="text-[0.62rem] uppercase tracking-[0.22em] text-primary">Follow Tony / 關注 Tony</p>
       <div className="mt-4">
         <SocialLinks />
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid max-w-xl grid-cols-2 gap-4 sm:gap-6">
         {codes.map((code) => (
           <a
             key={code.label}
             href={code.href}
             target="_blank"
             rel="noreferrer"
-            className="group block"
+            className="group flex flex-col items-center rounded-xl border border-border bg-background p-4 text-center transition hover:border-primary"
           >
             <img
               src={code.image}
               alt={code.alt}
-              className="aspect-square w-full rounded-lg border border-border object-cover"
+              className="size-[140px] max-w-full rounded-lg object-cover"
+              width={140}
+              height={140}
             />
-            <span className="mt-2 block text-xs font-medium text-foreground/75 group-hover:text-primary">
+            <span className="mt-3 block text-xs font-medium text-foreground/75 transition-colors group-hover:text-primary">
               {code.label} ↗
             </span>
           </a>

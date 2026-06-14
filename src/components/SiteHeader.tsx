@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Globe2 } from "lucide-react";
 import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
 import { CONTACT } from "../lib/contact";
 
@@ -18,9 +19,11 @@ export function SiteHeader() {
           <a href={CONTACT.phoneHref} className="font-medium hover:text-primary">
             {CONTACT.phone}
           </a>
-          <div className="inline-flex items-center rounded-full border border-border bg-background p-0.5" aria-label="Site language">
-            <span className="rounded-full bg-secondary px-2.5 py-1 font-semibold text-secondary-foreground">EN</span>
-            <span className="cursor-default px-2.5 py-1 text-foreground/55" aria-disabled="true" title="Chinese site coming soon">
+          <div className="inline-flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.16em]" aria-label="Site language">
+            <Globe2 className="size-3.5 text-primary" aria-hidden />
+            <span className="text-foreground transition-colors duration-150">EN</span>
+            <span className="h-3 w-px bg-border" aria-hidden />
+            <span className="cursor-default text-foreground/40 transition-colors duration-150 hover:text-foreground/65" aria-disabled="true" title="Chinese site coming soon">
               中文
             </span>
           </div>
