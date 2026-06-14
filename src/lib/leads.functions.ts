@@ -85,24 +85,27 @@ export const submitLead = createServerFn({ method: "POST" })
       detail("Message", data.message),
     ].join("\n");
 
-    try {
-      await sendEmail(resendKey, {
-        from: "Tony Lin Website <onboarding@resend.dev>",
+    const deliveries = await Promise.allSettled([
+      sendEmail(resendKey, {
+        from: "Tony Lin Website <tony@tony-lin.ca>",
         to: ["tony@tony-lin.ca"],
         reply_to: data.email,
         subject: `${data.source === "valuation" ? "Free valuation request" : "Website enquiry"} — ${data.name}`,
         text: `A new lead was submitted.\n\n${details}\n\nLead ID: ${lead.id}`,
-      });
-      await sendEmail(resendKey, {
-        from: "Tony Lin <onboarding@resend.dev>",
+      }),
+      sendEmail(resendKey, {
+        from: "Tony Lin <tony@tony-lin.ca>",
         to: [data.email],
         reply_to: "tony@tony-lin.ca",
         subject: "Your enquiry has been received — Tony Lin",
         text: `Hi ${data.name},\n\nThank you for reaching out. Your ${data.source === "valuation" ? "property valuation request" : "enquiry"} has been received, and Tony will review it shortly.\n\nFor time-sensitive questions or to book a consultation, call 604-700-3946.\n\nTony Lin, REALTOR®\nUniLife Realty Inc.`,
-      });
+      }),
+    ]);
+
+    const failures = deliveries.filter((delivery) => delivery.status === "rejected");
+    if (failures.length === 0) {
       return { success: true, emailSent: true };
-    } catch (emailError) {
-      console.error("Lead saved but email delivery failed", emailError);
-      return { success: true, emailSent: false };
     }
+    console.error("Lead saved but one or more email deliveries failed", failures);
+    return { success: true, emailSent: false };
   });
