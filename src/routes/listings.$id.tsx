@@ -30,17 +30,19 @@ export const Route = createFileRoute("/listings/$id")({
 
 function ListingDetailPage() {
   const listing = Route.useLoaderData();
-  const stats = [
+  const stats: Array<[string, string] | null> = [
     listing.beds !== undefined ? ["Beds", String(listing.beds)] : null,
     listing.baths !== undefined ? ["Baths", String(listing.baths)] : null,
     listing.sqft ? ["Interior", `${listing.sqft.toLocaleString()} sq. ft.`] : null,
     listing.acres ? ["Land", `${listing.acres} acres`] : null,
     listing.yearBuilt ? ["Year built", String(listing.yearBuilt)] : null,
-  ].filter((item): item is string[] => item !== null);
-  const details = [
+  ];
+  const visibleStats = stats.filter((item): item is [string, string] => item !== null);
+  const details: Array<[string, string | undefined]> = [
     ["MLS®", listing.mlsNumber], ["Property type", listing.propertyType], ["Zoning", listing.zoning],
     ["Taxes", listing.taxes], ["Strata fee", listing.strataFee], ["CAP rate", listing.capRate], ["Lot size", listing.lotSize],
-  ].filter((item): item is string[] => Boolean(item[1]));
+  ];
+  const visibleDetails = details.filter((item): item is [string, string] => Boolean(item[1]));
 
   return <div className="min-h-dvh"><SiteHeader /><main>
     <section className="mx-auto max-w-7xl px-6 py-12 md:py-16"><ListingGallery photos={listing.photos} address={listing.address} />
@@ -50,11 +52,11 @@ function ListingDetailPage() {
           <h1 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">{listing.address}</h1>
           <p className="mt-3 text-foreground/65">{listing.neighbourhood} · {listing.city} {listing.postalCode}</p>
           <p className="mt-5 font-serif text-3xl">{formatPrice(listing.price)}</p>
-          {stats.length ? <dl className="mt-10 grid grid-cols-2 gap-4 border-y border-border py-6 sm:grid-cols-5">{stats.map(([label, value]) => <div key={label}><dt className="text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground">{label}</dt><dd className="mt-1 font-medium">{value}</dd></div>)}</dl> : null}
+          {visibleStats.length ? <dl className="mt-10 grid grid-cols-2 gap-4 border-y border-border py-6 sm:grid-cols-5">{visibleStats.map(([label, value]) => <div key={label}><dt className="text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground">{label}</dt><dd className="mt-1 font-medium">{value}</dd></div>)}</dl> : null}
           <h2 className="mt-12 font-serif text-3xl">Property highlights</h2><ul className="mt-5 space-y-3">{listing.highlights.map((item) => <li key={item} className="flex gap-3 text-foreground/75"><span className="mt-2 h-px w-5 shrink-0 bg-primary" />{item}</li>)}</ul>
           <h2 className="mt-12 font-serif text-3xl">About this property</h2><p className="mt-5 leading-8 text-foreground/75">{listing.description}</p>
         </div>
-        <aside className="md:col-span-4"><div className="rounded-2xl border border-border bg-card p-7"><h2 className="font-serif text-2xl">Property details</h2><dl className="mt-6 divide-y divide-border">{details.map(([label, value]) => <div key={label} className="flex justify-between gap-5 py-3 text-sm"><dt className="text-muted-foreground">{label}</dt><dd className="text-right font-medium">{value}</dd></div>)}</dl><p className="mt-6 text-sm">Listed by {listing.listedBy}</p><p className="mt-3 text-xs leading-relaxed text-muted-foreground">{DISCLAIMER}</p></div></aside>
+        <aside className="md:col-span-4"><div className="rounded-2xl border border-border bg-card p-7"><h2 className="font-serif text-2xl">Property details</h2><dl className="mt-6 divide-y divide-border">{visibleDetails.map(([label, value]) => <div key={label} className="flex justify-between gap-5 py-3 text-sm"><dt className="text-muted-foreground">{label}</dt><dd className="text-right font-medium">{value}</dd></div>)}</dl><p className="mt-6 text-sm">Listed by {listing.listedBy}</p><p className="mt-3 text-xs leading-relaxed text-muted-foreground">{DISCLAIMER}</p></div></aside>
       </div>
       <div className="mt-16 rounded-3xl bg-secondary p-8 text-secondary-foreground md:p-12"><h2 className="font-serif text-3xl">Interested in this property?</h2><p className="mt-3 text-secondary-foreground/75">Get clear answers and arrange a private consultation.</p><div className="mt-7 flex flex-wrap gap-3"><Button asChild size="lg"><Link to="/contact">Book a Consultation</Link></Button><Button asChild size="lg" variant="outline"><a href={CONTACT.phoneHref}>Call {CONTACT.phone}</a></Button><Button asChild size="lg" variant="outline"><Link to="/" hash="valuation">Request a Valuation</Link></Button></div></div>
     </section>

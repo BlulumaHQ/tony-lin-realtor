@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Greater Vancouver real estate advisor — commercial, residential, and land representation with UniLife Realty Inc. English & Mandarin service.",
+          "Greater Vancouver real estate advisor — commercial, residential, and land representation with UniLife Realty Inc. English & 國語 service.",
       },
       { property: "og:title", content: "Tony Lin — Greater Vancouver Real Estate Advisor" },
       {
@@ -124,7 +124,7 @@ function Hero() {
               <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
                 Languages
               </dt>
-              <dd className="mt-1 font-medium">EN · 中文</dd>
+              <dd className="mt-1 font-medium">English · 國語</dd>
             </div>
             <div>
               <dt className="text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
@@ -157,11 +157,6 @@ function Hero() {
                 <p className="mt-2 text-sm text-foreground/70">UniLife Realty Inc.</p>
               </div>
             </div>
-            <img
-              src={unilifeLogo.url}
-              alt="UniLife Realty Inc. — Royal Pacific Realty Group"
-              className="absolute -bottom-6 -left-6 hidden h-14 w-auto rounded-md bg-white px-3 py-2 shadow-lg ring-1 ring-border md:block"
-            />
           </div>
         </div>
       </div>
@@ -172,7 +167,7 @@ function Hero() {
 function TrustBar() {
   const items = [
     { k: "Brokerage", v: "UniLife Realty Inc." },
-    { k: "Languages", v: "English & Mandarin" },
+    { k: "Languages", v: "English & 國語" },
     { k: "Coverage", v: "Greater Vancouver · Fraser Valley" },
     { k: "Asset Classes", v: "Commercial · Residential · Land" },
   ];
@@ -211,13 +206,13 @@ function About() {
             experience.
           </p>
           <p className="mt-5 text-lg leading-relaxed text-foreground/80">
-            Tony works with English and Mandarin-speaking clients and provides practical real estate
+            Tony works with English and 國語-speaking clients and provides practical real estate
             guidance for buyers, sellers, investors, and property owners who need clear advice
             before making major property decisions.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <Stat label="Brokerage" value="UniLife Realty Inc." />
-            <Stat label="Languages" value="English · Mandarin" />
+            <Stat label="Languages" value="English · 國語" />
             <Stat label="Direct" value={CONTACT.phone} />
           </div>
         </div>
@@ -272,7 +267,7 @@ function FeaturedListings() {
 
 function ValuationSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
+    <section id="valuation" className="mx-auto max-w-7xl px-6 py-24">
       <div className="grid items-start gap-12 rounded-3xl border border-border bg-card p-8 shadow-sm md:grid-cols-12 md:p-14">
         <div className="md:col-span-5">
           <p className="section-label">
@@ -437,7 +432,7 @@ function MarketAreas() {
 }
 
 function RecentResults() {
-  const sold = listings.find((listing) => listing.id === "36th-mackenzie");
+  const sold = listings.find((listing) => listing.isFeaturedResult);
   if (!sold) return null;
 
   const placeholders = [
@@ -469,19 +464,23 @@ function RecentResults() {
           Closed representation, grounded in careful execution.
         </h2>
         <div className="mt-12 grid items-center gap-8 rounded-3xl border border-border bg-background p-6 md:grid-cols-2 md:p-10">
-          <div className="img-luxury aspect-[16/10] rounded-2xl" />
+          <Link to="/listings/$id" params={{ id: sold.id }} className="block overflow-hidden rounded-2xl">
+            <img src={sold.coverImage} alt={sold.address} className="aspect-[16/10] w-full object-cover transition duration-500 hover:scale-[1.02]" loading="lazy" />
+          </Link>
           <div>
             <span className="rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-secondary-foreground">
               Sold
             </span>
             <p className="mt-5 text-xs uppercase tracking-[0.18em] text-primary">
-              Closed representation · MLS® {sold.mls}
+              Closed representation · MLS® {sold.mlsNumber}
             </p>
             <h3 className="mt-3 font-serif text-3xl text-foreground">{sold.address}</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              {sold.area} · {sold.city}
+              {sold.neighbourhood} · {sold.city}
             </p>
-            <p className="mt-5 font-serif text-2xl text-foreground">{sold.price}</p>
+            <p className="mt-5 font-serif text-2xl text-foreground">
+              {new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(sold.price)}
+            </p>
             <p className="mt-4 text-sm leading-relaxed text-foreground/75">{sold.description}</p>
           </div>
         </div>
@@ -521,7 +520,7 @@ function WhyTony() {
   const items = [
     {
       t: "Bilingual service",
-      b: "Clear communication for English and Mandarin-speaking clients throughout the process.",
+      b: "Clear communication for English and 國語-speaking clients throughout the process.",
     },
     {
       t: "Multi-asset experience",
@@ -574,7 +573,7 @@ function ContactCTA() {
             </h2>
             <p className="mt-5 max-w-xl text-white/75">
               Get a no-pressure review of your situation and practical next steps — in English or
-              Mandarin.
+              國語.
             </p>
           </div>
           <div className="md:col-span-5">

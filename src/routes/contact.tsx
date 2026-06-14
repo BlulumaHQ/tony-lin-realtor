@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Reach Tony Lin, REALTOR® at UniLife Realty Inc. Call 604-700-3946 or email tony@tony-lin.ca. English and Mandarin service.",
+          "Reach Tony Lin, REALTOR® at UniLife Realty Inc. Call 604-700-3946 or email tony@tony-lin.ca. English and 國語 service.",
       },
       { property: "og:title", content: "Contact Tony Lin, REALTOR®" },
       { property: "og:description", content: "Book a no-pressure real estate consultation." },

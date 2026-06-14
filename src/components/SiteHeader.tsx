@@ -20,9 +20,9 @@ export function SiteHeader() {
           </a>
           <div className="inline-flex items-center rounded-full border border-border bg-background p-0.5" aria-label="Site language">
             <span className="rounded-full bg-secondary px-2.5 py-1 font-semibold text-secondary-foreground">EN</span>
-            <button type="button" className="cursor-default px-2.5 py-1 text-foreground/55" aria-disabled="true" title="Chinese site coming soon">
+            <span className="cursor-default px-2.5 py-1 text-foreground/55" aria-disabled="true" title="Chinese site coming soon">
               中文
-            </button>
+            </span>
           </div>
         </div>
       </div>
