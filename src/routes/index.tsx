@@ -253,6 +253,26 @@ function FeaturedListings() {
   );
 }
 
+function ValuationSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-24">
+      <div className="grid items-start gap-12 rounded-3xl border border-border bg-card p-8 shadow-sm md:grid-cols-12 md:p-14">
+        <div className="md:col-span-5">
+          <p className="section-label"><span className="gold-divider mr-3" />Free Property Valuation</p>
+          <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
+            What&apos;s your property worth in today&apos;s market?
+          </h2>
+          <p className="mt-5 text-foreground/75">
+            Get a no-obligation valuation and current market insight for your home,
+            commercial unit, or land — usually within one business day.
+          </p>
+        </div>
+        <div className="md:col-span-7"><LeadForm source="valuation" /></div>
+      </div>
+    </section>
+  );
+}
+
 function FocusBlocks() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24">
@@ -353,11 +373,11 @@ function MarketAreas() {
         <div className="md:col-span-5">
           <p className="section-label"><span className="gold-divider mr-3" />Market Areas</p>
           <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
-            Where Tony works.
+            Your markets, clearly understood.
           </h2>
           <p className="mt-5 text-foreground/75">
-            Active representation across the Lower Mainland, with public listing
-            experience in Richmond, Vancouver West, and Surrey.
+            Navigate the Lower Mainland with relevant public listing experience in
+            Richmond, Vancouver West, and Surrey.
           </p>
         </div>
         <ul className="md:col-span-7 grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -375,6 +395,57 @@ function MarketAreas() {
   );
 }
 
+function RecentResults() {
+  const sold = listings.find((listing) => listing.id === "36th-mackenzie");
+  if (!sold) return null;
+
+  const placeholders = [
+    { name: "Client name", area: "Neighbourhood", quote: "Add a verified client testimonial here." },
+    { name: "Client name", area: "Neighbourhood", quote: "Add a verified client testimonial here." },
+    { name: "Client name", area: "Neighbourhood", quote: "Add a verified client testimonial here." },
+  ];
+
+  return (
+    <section className="bg-card/60 py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <p className="section-label"><span className="gold-divider mr-3" />Recent Results</p>
+        <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight text-foreground md:text-5xl">
+          Closed representation, grounded in careful execution.
+        </h2>
+        <div className="mt-12 grid items-center gap-8 rounded-3xl border border-border bg-background p-6 md:grid-cols-2 md:p-10">
+          <div className="img-luxury aspect-[16/10] rounded-2xl" />
+          <div>
+            <span className="rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-secondary-foreground">Sold</span>
+            <p className="mt-5 text-xs uppercase tracking-[0.18em] text-primary">Closed representation · MLS® {sold.mls}</p>
+            <h3 className="mt-3 font-serif text-3xl text-foreground">{sold.address}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{sold.area} · {sold.city}</p>
+            <p className="mt-5 font-serif text-2xl text-foreground">{sold.price}</p>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/75">{sold.description}</p>
+          </div>
+        </div>
+
+        <div className="mt-16 flex items-end justify-between gap-6">
+          <div>
+            <p className="section-label">Client Testimonials</p>
+            <h3 className="mt-3 font-serif text-3xl text-foreground">Real feedback belongs here.</h3>
+          </div>
+          <p className="rounded-full border border-primary px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-primary">Placeholders</p>
+        </div>
+        <div className="mt-7 grid gap-6 md:grid-cols-3">
+          {placeholders.map((item, index) => (
+            <article key={index} className="rounded-2xl border border-dashed border-border bg-background p-7">
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-primary">Placeholder — replace before publishing</p>
+              <p className="mt-5 font-serif text-xl text-foreground">“{item.quote}”</p>
+              <p className="mt-6 text-sm font-medium text-foreground">{item.name}</p>
+              <p className="text-xs text-muted-foreground">{item.area}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function WhyTony() {
   const items = [
     { t: "Bilingual service", b: "Clear communication for English and Mandarin-speaking clients throughout the process." },
@@ -383,7 +454,7 @@ function WhyTony() {
     { t: "Practical guidance", b: "Direct, evidence-based advice — no pressure, no overpromising." },
   ];
   return (
-    <section className="bg-card/60 py-24">
+    <section className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <p className="section-label"><span className="gold-divider mr-3" />Why Work With Tony</p>
         <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight text-foreground md:text-5xl">
@@ -413,8 +484,8 @@ function ContactCTA() {
               Considering a property decision in Greater Vancouver?
             </h2>
             <p className="mt-5 max-w-xl text-white/75">
-              Reach out for a no-pressure consultation. Tony will review your
-              situation and outline practical next steps — in English or Mandarin.
+               Get a no-pressure review of your situation and practical next steps —
+               in English or Mandarin.
             </p>
           </div>
           <div className="md:col-span-5">
