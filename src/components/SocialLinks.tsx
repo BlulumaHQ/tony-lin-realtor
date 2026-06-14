@@ -31,9 +31,9 @@ export function SocialLinks({ light = false }: { light?: boolean }) {
         aria-label="Xiaohongshu RED"
       >
         <span className="rounded bg-destructive px-1.5 py-0.5 text-[0.58rem] font-bold text-destructive-foreground">
-          RED
+          小紅書
         </span>
-        小紅書
+        RED
       </a>
     </div>
   );

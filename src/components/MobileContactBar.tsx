@@ -30,7 +30,7 @@ export function MobileContactBar() {
                 <Icon className="size-4" aria-hidden />
               ) : (
                 <span className="rounded bg-destructive px-1 text-[0.5rem] font-bold text-destructive-foreground">
-                  RED
+                  小紅書
                 </span>
               )}
               <span className="truncate">{action.label}</span>

@@ -4,7 +4,7 @@ export const CONTACT = {
   phone: "604-700-3946",
   phoneHref: "tel:+16047003946",
   email: "tony@tony-lin.ca",
-  languages: "English & Mandarin",
+  languages: "English & 國語",
   brokerage: "UniLife Realty Inc.",
   officeAddress: "100 – 1200 West 73rd Avenue",
   officeCity: "Vancouver, BC V6P 6G5",

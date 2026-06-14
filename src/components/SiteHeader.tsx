@@ -13,6 +13,19 @@ const nav = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      <div className="border-b border-border/60 bg-card/70">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1.5 text-xs text-foreground/70">
+          <a href={CONTACT.phoneHref} className="font-medium hover:text-primary">
+            {CONTACT.phone}
+          </a>
+          <div className="inline-flex items-center rounded-full border border-border bg-background p-0.5" aria-label="Site language">
+            <span className="rounded-full bg-secondary px-2.5 py-1 font-semibold text-secondary-foreground">EN</span>
+            <button type="button" className="cursor-default px-2.5 py-1 text-foreground/55" aria-disabled="true" title="Chinese site coming soon">
+              中文
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <Link to="/" className="flex items-baseline gap-3">
           <span className="font-serif text-2xl tracking-tight text-foreground">Tony Lin</span>
@@ -36,12 +49,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <a
-            href={CONTACT.phoneHref}
-            className="hidden text-sm font-medium text-foreground/90 hover:text-primary lg:inline"
-          >
-            {CONTACT.phone}
-          </a>
           <img
             src={unilifeLogo.url}
             alt="UniLife Realty Inc. — Royal Pacific Realty Group"
