@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import tonyPortrait from "../assets/tony-lin.webp.asset.json";
-import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
@@ -137,6 +136,10 @@ function Hero() {
               </dd>
             </div>
           </dl>
+          <div className="mt-7 flex items-center gap-3 border-t border-border/70 pt-5">
+            <span className="text-[0.62rem] uppercase tracking-[0.18em] text-muted-foreground">Brokerage</span>
+            <span className="text-sm font-medium text-foreground">UniLife Realty Inc. · Royal Pacific Realty Group</span>
+          </div>
         </div>
 
         <div className="fade-up md:col-span-5">

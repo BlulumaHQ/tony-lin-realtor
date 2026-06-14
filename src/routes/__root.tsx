@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Tony Lin is a REALTOR® with UniLife Realty Inc., serving Greater Vancouver and Fraser Valley clients in residential, commercial, and land real estate. English and Mandarin service available.",
+          "Tony Lin is a REALTOR® with UniLife Realty Inc., serving Greater Vancouver and Fraser Valley clients in residential, commercial, and land real estate. English and 國語 service available.",
       },
       { name: "author", content: "Tony Lin" },
       { property: "og:site_name", content: "Tony Lin — UniLife Realty Inc." },
