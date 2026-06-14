@@ -12,10 +12,10 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Tony Lin is a REALTOR® with UniLife Realty Inc. serving Greater Vancouver and the Fraser Valley — commercial, residential, and land representation.",
+          "Tony Lin is a REALTOR® with UniLife Realty Inc. serving Greater Vancouver and the Fraser Valley — commercial, residential, and land representation in English and 國語.",
       },
       { property: "og:title", content: "About Tony Lin — REALTOR®" },
-      { property: "og:description", content: "Practical real estate guidance across asset classes, in English and Mandarin." },
+      { property: "og:description", content: "Practical real estate guidance across asset classes, in English and 國語." },
       { property: "og:url", content: "/about" },
       { property: "og:image", content: tonyPortrait.url },
     ],
@@ -57,7 +57,7 @@ function AboutPage() {
                 land, and Vancouver West residential property experience.
               </p>
               <p className="mt-5 text-lg leading-relaxed text-foreground/80">
-                Tony works with English and Mandarin-speaking clients and provides
+                Tony works with English and 國語-speaking clients and provides
                 practical real estate guidance for buyers, sellers, investors, and
                 property owners who need clear advice before making major property
                 decisions.
@@ -68,7 +68,7 @@ function AboutPage() {
                 <InfoTile label="Office" value={`${CONTACT.officeAddress}, ${CONTACT.officeCity}`} />
                 <InfoTile label="Direct" value={CONTACT.phone} href={CONTACT.phoneHref} />
                 <InfoTile label="Email" value={CONTACT.email} href={`mailto:${CONTACT.email}`} />
-                <InfoTile label="Languages" value="English · Mandarin" />
+                <InfoTile label="Languages" value="English · 國語" />
                 <InfoTile label="Office Phone" value={CONTACT.officePhone} href={CONTACT.officePhoneHref} />
               </div>
 

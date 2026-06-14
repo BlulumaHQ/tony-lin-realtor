@@ -10,7 +10,7 @@ const leadSchema = z
     propertyType: z.enum(["Residential", "Commercial", "Land", "Not sure"]).optional(),
     interest: z.string().trim().max(100).optional(),
     message: z.string().trim().max(2000).optional(),
-    source: z.enum(["valuation", "contact"]),
+    source: z.enum(["valuation", "contact", "alerts"]),
   })
   .superRefine((lead, context) => {
     if (lead.source === "valuation" && !lead.propertyAddress) {
@@ -51,7 +51,7 @@ export const submitLead = createServerFn({ method: "POST" })
     const { data: lead, error } = await supabaseAdmin
       .from("leads")
       .insert({
-        name: data.name,
+        name: data.name || "Market alerts subscriber",
         email: data.email,
         phone: data.phone || null,
         property_address: data.propertyAddress || null,
@@ -90,7 +90,7 @@ export const submitLead = createServerFn({ method: "POST" })
         from: "Tony Lin Website <tony@tony-lin.ca>",
         to: ["tony@tony-lin.ca"],
         reply_to: data.email,
-        subject: `${data.source === "valuation" ? "Free valuation request" : "Website enquiry"} — ${data.name}`,
+        subject: `${data.source === "valuation" ? "Free valuation request" : data.source === "alerts" ? "Market alerts signup" : "Website enquiry"} — ${data.name || data.email}`,
         text: `A new lead was submitted.\n\n${details}\n\nLead ID: ${lead.id}`,
       }),
       sendEmail(resendKey, {
@@ -98,7 +98,7 @@ export const submitLead = createServerFn({ method: "POST" })
         to: [data.email],
         reply_to: "tony@tony-lin.ca",
         subject: "Your enquiry has been received — Tony Lin",
-        text: `Hi ${data.name},\n\nThank you for reaching out. Your ${data.source === "valuation" ? "property valuation request" : "enquiry"} has been received, and Tony will review it shortly.\n\nFor time-sensitive questions or to book a consultation, call 604-700-3946.\n\nTony Lin, REALTOR®\nUniLife Realty Inc.`,
+        text: `Hi ${data.name || "there"},\n\nThank you for reaching out. Your ${data.source === "valuation" ? "property valuation request" : data.source === "alerts" ? "market alerts signup" : "enquiry"} has been received.\n\nFor time-sensitive questions or to book a consultation, call 604-700-3946.\n\nTony Lin, REALTOR®\nUniLife Realty Inc.`,
       }),
     ]);
 
