@@ -53,7 +53,8 @@ function ServicesPage() {
     <div className="min-h-dvh">
       <SiteHeader />
       <main>
-        <section className="mx-auto max-w-7xl px-6 pt-20 pb-12">
+        <section className="luxury-wave-bg px-6 pt-20 pb-12">
+          <div className="mx-auto max-w-7xl">
           <p className="section-label"><span className="gold-divider mr-3" />Services</p>
           <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-tight text-foreground md:text-6xl">
             Real estate guidance across asset classes.
@@ -63,6 +64,7 @@ function ServicesPage() {
             Richmond and acreage in the Fraser Valley — Tony provides clear,
             evidence-based representation.
           </p>
+          </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-6 pb-24">

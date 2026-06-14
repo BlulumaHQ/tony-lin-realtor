@@ -334,9 +334,11 @@ function FocusCard({
         <p className="text-xs uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
         <h3 className="mt-3 font-serif text-2xl text-foreground">{title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-foreground/75">{body}</p>
-        <Button asChild variant="outline" className="mt-auto rounded-full pt-6">
-          <Link to="/services">Explore Services</Link>
-        </Button>
+        <div className="mt-auto pt-6">
+          <Button asChild variant="outline" className="rounded-full">
+            <Link to="/services">Explore Services</Link>
+          </Button>
+        </div>
       </div>
     </article>
   );

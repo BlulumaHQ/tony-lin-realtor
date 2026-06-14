@@ -30,7 +30,8 @@ function ListingsPage() {
     <div className="min-h-dvh">
       <SiteHeader />
       <main>
-        <section className="mx-auto max-w-7xl px-6 pt-16 pb-10">
+        <section className="luxury-wave-bg px-6 pt-16 pb-10">
+          <div className="mx-auto max-w-7xl">
           <p className="section-label"><span className="gold-divider mr-3" />Listings</p>
           <h1 className="mt-5 font-serif text-5xl leading-tight text-foreground md:text-6xl">
             Featured properties.
@@ -39,6 +40,7 @@ function ListingsPage() {
             A selection of current and recently represented listings across
             Greater Vancouver and the Fraser Valley.
           </p>
+          </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-6 pb-16">
