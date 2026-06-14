@@ -5,7 +5,7 @@ import { ListingCard } from "../components/ListingCard";
 import { listings } from "../data/listings";
 import { DISCLAIMER } from "../lib/contact";
 
-export const Route = createFileRoute("/listings")({
+export const Route = createFileRoute("/listings/")({
   head: () => ({
     meta: [
       { title: "Listings — Tony Lin REALTOR® | UniLife Realty Inc." },
