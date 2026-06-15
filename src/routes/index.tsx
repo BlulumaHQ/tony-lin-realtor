@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import tonyPortrait from "../assets/tony-lin.webp.asset.json";
+import tonyPortrait from "../assets/tony-lin.webp";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
           "Commercial, residential, and land representation across Greater Vancouver and the Fraser Valley. UniLife Realty Inc.",
       },
       { property: "og:url", content: "/" },
-      { property: "og:image", content: tonyPortrait.url },
+      { property: "og:image", content: tonyPortrait },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
           jobTitle: "REALTOR®",
           telephone: CONTACT.phone,
           email: CONTACT.email,
-          image: tonyPortrait.url,
+          image: tonyPortrait,
           knowsLanguage: ["English", "Mandarin"],
           areaServed: ["Greater Vancouver", "Fraser Valley", "Richmond", "Vancouver", "Surrey"],
           worksFor: {
@@ -153,7 +153,7 @@ function Hero() {
             />
             <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
               <img
-                src={tonyPortrait.url}
+                src={tonyPortrait}
                 alt="Tony Lin, REALTOR® at UniLife Realty Inc."
                 className="aspect-[3/4] w-full object-cover"
               />

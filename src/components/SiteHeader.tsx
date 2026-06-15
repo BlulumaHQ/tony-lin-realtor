@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Globe2 } from "lucide-react";
-import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
+import unilifeLogo from "../assets/unilife-royal-pacific.png";
 import { CONTACT } from "../lib/contact";
 
 const nav = [
@@ -63,7 +63,7 @@ export function SiteHeader({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
 
         <div className="flex items-center gap-4">
           <img
-            src={unilifeLogo.url}
+            src={unilifeLogo}
             alt="UniLife Realty Inc. — Royal Pacific Realty Group"
             className="h-9 w-auto md:h-10"
           />

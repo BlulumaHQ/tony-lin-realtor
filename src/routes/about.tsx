@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import tonyPortrait from "../assets/tony-lin.webp.asset.json";
-import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
+import tonyPortrait from "../assets/tony-lin.webp";
+import unilifeLogo from "../assets/unilife-royal-pacific.png";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { CONTACT } from "../lib/contact";
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Tony Lin — REALTOR®" },
       { property: "og:description", content: "Practical real estate guidance across asset classes, in English and 國語." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: tonyPortrait.url },
+      { property: "og:image", content: tonyPortrait },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),
@@ -34,14 +34,14 @@ function AboutPage() {
             <div className="md:col-span-5">
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
                 <img
-                  src={tonyPortrait.url}
+                  src={tonyPortrait}
                   alt="Tony Lin, REALTOR® at UniLife Realty Inc."
                   className="aspect-[3/4] w-full object-cover"
                 />
               </div>
               <div className="mt-6 inline-flex rounded-xl border border-border bg-card px-5 py-3 shadow-sm">
                 <img
-                  src={unilifeLogo.url}
+                  src={unilifeLogo}
                   alt="UniLife Realty Inc. — Royal Pacific Realty Group"
                   className="h-12 w-auto"
                 />

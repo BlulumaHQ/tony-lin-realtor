@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import tonyPortrait from "../assets/tony-lin.webp.asset.json";
+import tonyPortrait from "../assets/tony-lin.webp";
 import commercialFeature from "../assets/commercial-feature.jpg";
 import residentialFeature from "../assets/residential-feature.jpg";
 import { SiteHeader } from "../components/SiteHeader";
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/zh-tw/")({
       { property: "og:title", content: "Tony Lin｜大溫哥華房地產買賣服務" },
       { property: "og:description", content: "住宅、商用不動產與土地的實用市場建議，服務 Greater Vancouver 與 Fraser Valley。" },
       { property: "og:url", content: "/zh-tw" },
-      { property: "og:image", content: tonyPortrait.url },
+      { property: "og:image", content: tonyPortrait },
     ],
     links: [
       { rel: "canonical", href: "/zh-tw" },
@@ -38,7 +38,7 @@ function ChineseHome() {
         <div className="mt-9 flex flex-wrap gap-3"><Button asChild size="lg" className="rounded-full"><Link to="/zh-tw/contact">預約諮詢</Link></Button><Button asChild size="lg" variant="outline" className="rounded-full"><Link to="/zh-tw/listings">查看房源</Link></Button></div>
         <dl className="mt-12 grid max-w-lg grid-cols-2 gap-6 sm:grid-cols-4"><Meta label="專業身分" value="REALTOR®" /><Meta label="經紀公司" value="UniLife Realty" /><Meta label="語言" value="English · 國語" /><Meta label="直撥電話" value={CONTACT.phone} /></dl>
       </div>
-      <div className="md:col-span-5"><div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"><img src={tonyPortrait.url} alt="Tony Lin，UniLife Realty Inc. REALTOR®" className="aspect-[3/4] w-full object-cover" /><div className="p-5"><p className="font-serif text-xl">Tony Lin</p><p className="text-xs uppercase tracking-[0.22em] text-primary">REALTOR® · UniLife Realty Inc.</p></div></div></div>
+      <div className="md:col-span-5"><div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"><img src={tonyPortrait} alt="Tony Lin，UniLife Realty Inc. REALTOR®" className="aspect-[3/4] w-full object-cover" /><div className="p-5"><p className="font-serif text-xl">Tony Lin</p><p className="text-xs uppercase tracking-[0.22em] text-primary">REALTOR® · UniLife Realty Inc.</p></div></div></div>
     </div></section>
     <section className="mx-auto max-w-7xl px-6 py-24"><div className="grid gap-14 md:grid-cols-12"><div className="md:col-span-5"><p className="section-label"><span className="gold-divider mr-3" />關於 Tony</p><h2 className="mt-5 font-serif text-4xl leading-tight md:text-5xl">重要的不動產決定，值得清楚而務實的建議。</h2></div><div className="md:col-span-7"><p className="text-lg leading-relaxed text-foreground/80">Tony Lin 是 UniLife Realty Inc. 的 REALTOR®，服務 Greater Vancouver 與 Fraser Valley。無論您準備自住、換屋、出售資產或評估投資，Tony 都會把複雜資訊整理成容易理解的重點。</p><p className="mt-5 text-lg leading-relaxed text-foreground/80">熟悉住宅、零售商用不動產、農業用地與土地案件，可使用 English 或國語溝通，讓流程、合約與下一步都更明確。</p></div></div></section>
     <section className="bg-card/60 py-24"><div className="mx-auto max-w-7xl px-6"><p className="section-label"><span className="gold-divider mr-3" />精選房源</p><div className="flex items-end justify-between gap-5"><h2 className="mt-5 font-serif text-4xl md:text-5xl">目前值得留意的物件。</h2><Link to="/zh-tw/listings" className="text-sm text-primary hover:underline">查看全部房源 →</Link></div><div className="mt-12 grid gap-8 md:grid-cols-2">{listings.filter((item) => item.status === "Active").map((item) => <ListingCard key={item.id} listing={item} locale="zh-TW" />)}</div></div></section>
