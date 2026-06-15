@@ -181,10 +181,10 @@
   }
 
   .luxury-wave-bg {
-    background-color: var(--ivory);
-    background-image: linear-gradient(color-mix(in oklab, var(--ivory) 8%, transparent), color-mix(in oklab, var(--ivory) 8%, transparent)), url("./assets/gold-wave-background.jpg");
-    background-position: center bottom;
+    background-color: oklch(0.99 0.002 85);
+    background-image: url("/__l5e/assets-v1/08a22618-36ec-41a4-a787-313cb838532e/clean-white-gold-wave.png");
+    background-position: right bottom;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto 100%;
   }
 }
