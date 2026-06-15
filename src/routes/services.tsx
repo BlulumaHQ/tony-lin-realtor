@@ -53,7 +53,7 @@ function ServicesPage() {
     <div className="min-h-dvh">
       <SiteHeader />
       <main>
-        <section className="luxury-wave-bg px-6 pt-20 pb-12">
+        <section className="luxury-wave-bg luxury-wave-sweep px-6 pt-20 pb-12">
           <div className="mx-auto max-w-7xl">
           <p className="section-label"><span className="gold-divider mr-3" />Services</p>
           <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-tight text-foreground md:text-6xl">

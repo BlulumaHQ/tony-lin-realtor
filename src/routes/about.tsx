@@ -29,7 +29,7 @@ function AboutPage() {
     <div className="min-h-dvh">
       <SiteHeader />
       <main>
-        <section className="luxury-wave-bg px-6 py-20">
+        <section className="luxury-wave-bg luxury-wave-rise px-6 py-20">
           <div className="mx-auto grid max-w-7xl gap-14 md:grid-cols-12">
             <div className="md:col-span-5">
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
