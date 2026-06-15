@@ -8,7 +8,7 @@ export function SiteFooter({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
   const zh = locale === "zh-TW";
   const base = zh ? "/zh-tw" : "";
   return (
-    <footer className="mt-24 bg-[color:var(--charcoal)] text-[color:var(--ivory)]">
+    <footer className="bg-[color:var(--charcoal)] text-[color:var(--ivory)]">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="mb-14 rounded-3xl border border-white/10 bg-background p-7 text-foreground md:p-10">
           <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(24rem,0.9fr)] md:gap-10">

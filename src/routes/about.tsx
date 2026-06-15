@@ -39,11 +39,13 @@ function AboutPage() {
                   className="aspect-[3/4] w-full object-cover"
                 />
               </div>
-              <img
-                src={unilifeLogo.url}
-                alt="UniLife Realty Inc. — Royal Pacific Realty Group"
-                className="mt-6 h-12 w-auto"
-              />
+              <div className="mt-6 inline-flex rounded-xl border border-border bg-card px-5 py-3 shadow-sm">
+                <img
+                  src={unilifeLogo.url}
+                  alt="UniLife Realty Inc. — Royal Pacific Realty Group"
+                  className="h-12 w-auto"
+                />
+              </div>
             </div>
             <div className="md:col-span-7">
               <p className="section-label"><span className="gold-divider mr-3" />About</p>
