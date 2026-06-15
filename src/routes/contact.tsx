@@ -31,7 +31,7 @@ function ContactPage() {
     <div className="min-h-dvh">
       <SiteHeader />
       <main>
-        <section className="luxury-wave-bg px-6 py-20">
+        <section className="luxury-wave-bg luxury-wave-soft px-6 py-20">
           <div className="mx-auto max-w-7xl">
           <div className="grid items-stretch gap-14 md:grid-cols-12">
             <div className="flex h-full flex-col md:col-span-5">

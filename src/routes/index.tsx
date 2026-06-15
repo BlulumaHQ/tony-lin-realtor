@@ -297,7 +297,7 @@ function ValuationSection() {
 
 function FocusBlocks() {
   return (
-    <section className="luxury-wave-bg px-6 py-24">
+    <section className="luxury-wave-bg luxury-wave-sweep px-6 py-24">
       <div className="mx-auto grid max-w-7xl auto-rows-fr items-stretch gap-8 md:grid-cols-2">
         <FocusCard
           eyebrow="Commercial Real Estate"
@@ -411,7 +411,7 @@ function MarketAreas() {
     "Fraser Valley",
   ];
   return (
-    <section className="luxury-wave-bg px-6 py-24">
+    <section className="luxury-wave-bg luxury-wave-rise px-6 py-24">
       <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12 md:items-end">
         <div className="md:col-span-5">
           <p className="section-label">
