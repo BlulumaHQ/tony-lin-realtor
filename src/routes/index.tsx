@@ -3,6 +3,7 @@ import tonyPortrait from "../assets/tony-lin.webp.asset.json";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
+import { SoldRibbon } from "../components/SoldRibbon";
 import { LeadForm } from "../components/LeadForm";
 import { Button } from "../components/ui/button";
 import { listings } from "../data/listings";
@@ -474,8 +475,9 @@ function RecentResults() {
           Closed representation, grounded in careful execution.
         </h2>
         <div className="mt-12 grid items-center gap-8 rounded-3xl border border-border bg-background p-6 md:grid-cols-2 md:p-10">
-          <Link to="/listings/$id" params={{ id: sold.id }} className="block overflow-hidden rounded-2xl">
+          <Link to="/listings/$id" params={{ id: sold.id }} className="relative block overflow-hidden rounded-2xl">
             <img src={sold.coverImage} alt={sold.address} className="aspect-[16/10] w-full object-cover transition duration-500 hover:scale-[1.02]" loading="lazy" />
+            <SoldRibbon />
           </Link>
           <div>
             <span className="rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-secondary-foreground">
