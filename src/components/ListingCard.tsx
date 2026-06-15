@@ -4,11 +4,12 @@ import type { Listing } from "../data/listings";
 const formatPrice = (price: number) =>
   new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(price);
 
-export function ListingCard({ listing }: { listing: Listing }) {
+export function ListingCard({ listing, locale = "en" }: { listing: Listing; locale?: "en" | "zh-TW" }) {
   const isSold = listing.status === "Sold";
+  const zh = locale === "zh-TW";
   return (
     <Link
-      to="/listings/$id"
+      to={zh ? "/zh-tw/listings/$id" : "/listings/$id"}
       params={{ id: listing.id }}
       className="group block overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
@@ -24,7 +25,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
                 : "bg-primary text-primary-foreground")
             }
           >
-            {listing.status}
+            {zh ? isSold ? "已售出" : "出售中" : listing.status}
           </span>
           <span className="rounded-full bg-white/90 px-3 py-1 text-[0.65rem] font-medium uppercase tracking-wider text-foreground">
             MLS® {listing.mlsNumber}
@@ -45,17 +46,17 @@ export function ListingCard({ listing }: { listing: Listing }) {
         </p>
 
         <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-foreground/75">
-          {listing.beds !== undefined ? <li>{listing.beds} bed</li> : null}
-          {listing.baths !== undefined ? <li>{listing.baths} bath</li> : null}
-          {listing.sqft ? <li>{listing.sqft.toLocaleString()} sq. ft.</li> : null}
-          {listing.acres ? <li>{listing.acres} acres</li> : null}
+          {listing.beds !== undefined ? <li>{listing.beds} {zh ? "房" : "bed"}</li> : null}
+          {listing.baths !== undefined ? <li>{listing.baths} {zh ? "衛" : "bath"}</li> : null}
+          {listing.sqft ? <li>{listing.sqft.toLocaleString()} {zh ? "平方英尺" : "sq. ft."}</li> : null}
+          {listing.acres ? <li>{listing.acres} {zh ? "英畝" : "acres"}</li> : null}
         </ul>
 
         <p className="mt-4 line-clamp-4 text-sm leading-relaxed text-foreground/80">
           {listing.description}
         </p>
 
-        <p className="mt-5 text-xs text-muted-foreground">Listed by UniLife Realty Inc.</p>
+        <p className="mt-5 text-xs text-muted-foreground">{zh ? "經紀公司" : "Listed by"} UniLife Realty Inc.</p>
       </div>
       </article>
     </Link>

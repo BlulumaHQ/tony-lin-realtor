@@ -1,0 +1,28 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ListingGallery } from "../components/ListingGallery";
+import { SiteFooter } from "../components/SiteFooter";
+import { SiteHeader } from "../components/SiteHeader";
+import { Button } from "../components/ui/button";
+import { getListingById } from "../data/listings";
+import { CONTACT } from "../lib/contact";
+import { listingZh, ZH_DISCLAIMER } from "../lib/zh-tw";
+
+const formatPrice = (price: number) => new Intl.NumberFormat("zh-TW", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(price);
+
+export const Route = createFileRoute("/zh-tw/listings/$id")({
+  loader: ({ params }) => { const listing = getListingById(params.id); if (!listing) throw notFound(); return listing; },
+  head: ({ loaderData }) => ({
+    meta: loaderData ? [{ title: `${loaderData.address}｜Tony Lin 房源` }, { name: "description", content: `${listingZh[loaderData.id]?.category || loaderData.category}，位於 ${loaderData.neighbourhood}，售價 ${formatPrice(loaderData.price)}，MLS® ${loaderData.mlsNumber}。` }, { property: "og:title", content: `${loaderData.address}｜精選物件` }, { property: "og:description", content: (listingZh[loaderData.id]?.description || loaderData.description).slice(0, 155) }, { property: "og:image", content: loaderData.coverImage }, { property: "og:url", content: `/zh-tw/listings/${loaderData.id}` }] : [],
+    links: loaderData ? [{ rel: "canonical", href: `/zh-tw/listings/${loaderData.id}` }, { rel: "alternate", hrefLang: "en-CA", href: `/listings/${loaderData.id}` }, { rel: "alternate", hrefLang: "zh-Hant", href: `/zh-tw/listings/${loaderData.id}` }] : [],
+  }),
+  component: ListingZh,
+  notFoundComponent: () => <div className="mx-auto max-w-3xl px-6 py-24 text-center"><h1 className="font-serif text-4xl">找不到這筆房源。</h1><Button asChild className="mt-6"><Link to="/zh-tw/listings">返回房源列表</Link></Button></div>,
+});
+
+function ListingZh() {
+  const listing = Route.useLoaderData();
+  const copy = listingZh[listing.id];
+  const stats: Array<[string, string] | null> = [listing.beds !== undefined ? ["房間", String(listing.beds)] : null, listing.baths !== undefined ? ["衛浴", String(listing.baths)] : null, listing.sqft ? ["室內面積", `${listing.sqft.toLocaleString()} 平方英尺`] : null, listing.acres ? ["土地", `${listing.acres} 英畝`] : null, listing.yearBuilt ? ["屋齡年份", String(listing.yearBuilt)] : null];
+  const details: Array<[string, string | undefined]> = [["MLS®", listing.mlsNumber], ["物件類型", listing.propertyType], ["分區", listing.zoning], ["地產稅", listing.taxes], ["管理費", listing.strataFee], ["CAP rate", listing.capRate], ["土地面積", listing.lotSize]];
+  return <div className="min-h-dvh"><SiteHeader locale="zh-TW" /><main><section className="mx-auto max-w-7xl px-6 py-12 md:py-16"><ListingGallery photos={listing.photos} address={listing.address} /><div className="mt-12 grid gap-12 md:grid-cols-12"><div className="md:col-span-8"><div className="flex flex-wrap items-center gap-3"><span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">{listing.status === "Sold" ? "已售出" : "出售中"}</span><span className="text-xs uppercase tracking-[0.18em] text-primary">{copy?.category || listing.category}</span></div><h1 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">{listing.address}</h1><p className="mt-3 text-foreground/65">{listing.neighbourhood} · {listing.city} {listing.postalCode}</p><p className="mt-5 font-serif text-3xl">{formatPrice(listing.price)}</p><dl className="mt-10 grid grid-cols-2 gap-4 border-y border-border py-6 sm:grid-cols-5">{stats.filter((item): item is [string, string] => item !== null).map(([label, value]) => <div key={label}><dt className="text-[0.62rem] tracking-[0.18em] text-muted-foreground">{label}</dt><dd className="mt-1 font-medium">{value}</dd></div>)}</dl><h2 className="mt-12 font-serif text-3xl">物件亮點</h2><ul className="mt-5 space-y-3">{(copy?.highlights || listing.highlights).map((item) => <li key={item} className="flex gap-3 text-foreground/75"><span className="mt-2 h-px w-5 shrink-0 bg-primary" />{item}</li>)}</ul><h2 className="mt-12 font-serif text-3xl">物件介紹</h2><p className="mt-5 leading-8 text-foreground/75">{copy?.description || listing.description}</p></div><aside className="md:col-span-4"><div className="rounded-2xl border border-border bg-card p-7"><h2 className="font-serif text-2xl">物件資料</h2><dl className="mt-6 divide-y divide-border">{details.filter((item): item is [string, string] => Boolean(item[1])).map(([label, value]) => <div key={label} className="flex justify-between gap-5 py-3 text-sm"><dt className="text-muted-foreground">{label}</dt><dd className="text-right font-medium">{value}</dd></div>)}</dl><p className="mt-6 text-sm">經紀公司 {listing.listedBy}</p><p className="mt-3 text-xs leading-relaxed text-muted-foreground">{ZH_DISCLAIMER}</p></div></aside></div><div className="luxury-wave-bg luxury-wave-sweep mt-16 rounded-3xl border border-border p-8 md:p-12"><h2 className="font-serif text-3xl">想進一步了解這個物件？</h2><p className="mt-3 text-foreground/75">歡迎詢問物件細節，或安排一對一諮詢。</p><div className="mt-7 flex flex-wrap gap-3"><Button asChild><Link to="/zh-tw/contact">預約諮詢</Link></Button><Button asChild variant="outline"><a href={CONTACT.phoneHref}>致電 {CONTACT.phone}</a></Button><Button asChild variant="outline"><Link to="/zh-tw" hash="valuation">申請物件估價</Link></Button></div></div></section></main><SiteFooter locale="zh-TW" /></div>;
+}

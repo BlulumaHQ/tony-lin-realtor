@@ -9,13 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZhTwRouteImport } from './routes/zh-tw'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZhTwIndexRouteImport } from './routes/zh-tw.index'
 import { Route as ListingsIndexRouteImport } from './routes/listings.index'
+import { Route as ZhTwServicesRouteImport } from './routes/zh-tw.services'
+import { Route as ZhTwContactRouteImport } from './routes/zh-tw.contact'
+import { Route as ZhTwAboutRouteImport } from './routes/zh-tw.about'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
+import { Route as ZhTwListingsIndexRouteImport } from './routes/zh-tw.listings.index'
+import { Route as ZhTwListingsIdRouteImport } from './routes/zh-tw.listings.$id'
 
+const ZhTwRoute = ZhTwRouteImport.update({
+  id: '/zh-tw',
+  path: '/zh-tw',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -36,15 +48,45 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhTwIndexRoute = ZhTwIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ZhTwRoute,
+} as any)
 const ListingsIndexRoute = ListingsIndexRouteImport.update({
   id: '/listings/',
   path: '/listings/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhTwServicesRoute = ZhTwServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => ZhTwRoute,
+} as any)
+const ZhTwContactRoute = ZhTwContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => ZhTwRoute,
+} as any)
+const ZhTwAboutRoute = ZhTwAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => ZhTwRoute,
+} as any)
 const ListingsIdRoute = ListingsIdRouteImport.update({
   id: '/listings/$id',
   path: '/listings/$id',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwListingsIndexRoute = ZhTwListingsIndexRouteImport.update({
+  id: '/listings/',
+  path: '/listings/',
+  getParentRoute: () => ZhTwRoute,
+} as any)
+const ZhTwListingsIdRoute = ZhTwListingsIdRouteImport.update({
+  id: '/listings/$id',
+  path: '/listings/$id',
+  getParentRoute: () => ZhTwRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -52,8 +94,15 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/zh-tw': typeof ZhTwRouteWithChildren
   '/listings/$id': typeof ListingsIdRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/contact': typeof ZhTwContactRoute
+  '/zh-tw/services': typeof ZhTwServicesRoute
   '/listings/': typeof ListingsIndexRoute
+  '/zh-tw/': typeof ZhTwIndexRoute
+  '/zh-tw/listings/$id': typeof ZhTwListingsIdRoute
+  '/zh-tw/listings/': typeof ZhTwListingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +110,13 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/listings/$id': typeof ListingsIdRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/contact': typeof ZhTwContactRoute
+  '/zh-tw/services': typeof ZhTwServicesRoute
   '/listings': typeof ListingsIndexRoute
+  '/zh-tw': typeof ZhTwIndexRoute
+  '/zh-tw/listings/$id': typeof ZhTwListingsIdRoute
+  '/zh-tw/listings': typeof ZhTwListingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +124,15 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/zh-tw': typeof ZhTwRouteWithChildren
   '/listings/$id': typeof ListingsIdRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/contact': typeof ZhTwContactRoute
+  '/zh-tw/services': typeof ZhTwServicesRoute
   '/listings/': typeof ListingsIndexRoute
+  '/zh-tw/': typeof ZhTwIndexRoute
+  '/zh-tw/listings/$id': typeof ZhTwListingsIdRoute
+  '/zh-tw/listings/': typeof ZhTwListingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,18 +141,44 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/services'
+    | '/zh-tw'
     | '/listings/$id'
+    | '/zh-tw/about'
+    | '/zh-tw/contact'
+    | '/zh-tw/services'
     | '/listings/'
+    | '/zh-tw/'
+    | '/zh-tw/listings/$id'
+    | '/zh-tw/listings/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services' | '/listings/$id' | '/listings'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/listings/$id'
+    | '/zh-tw/about'
+    | '/zh-tw/contact'
+    | '/zh-tw/services'
+    | '/listings'
+    | '/zh-tw'
+    | '/zh-tw/listings/$id'
+    | '/zh-tw/listings'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
     | '/services'
+    | '/zh-tw'
     | '/listings/$id'
+    | '/zh-tw/about'
+    | '/zh-tw/contact'
+    | '/zh-tw/services'
     | '/listings/'
+    | '/zh-tw/'
+    | '/zh-tw/listings/$id'
+    | '/zh-tw/listings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -98,12 +186,20 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
+  ZhTwRoute: typeof ZhTwRouteWithChildren
   ListingsIdRoute: typeof ListingsIdRoute
   ListingsIndexRoute: typeof ListingsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zh-tw': {
+      id: '/zh-tw'
+      path: '/zh-tw'
+      fullPath: '/zh-tw'
+      preLoaderRoute: typeof ZhTwRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -132,12 +228,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh-tw/': {
+      id: '/zh-tw/'
+      path: '/'
+      fullPath: '/zh-tw/'
+      preLoaderRoute: typeof ZhTwIndexRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
     '/listings/': {
       id: '/listings/'
       path: '/listings'
       fullPath: '/listings/'
       preLoaderRoute: typeof ListingsIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/services': {
+      id: '/zh-tw/services'
+      path: '/services'
+      fullPath: '/zh-tw/services'
+      preLoaderRoute: typeof ZhTwServicesRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
+    '/zh-tw/contact': {
+      id: '/zh-tw/contact'
+      path: '/contact'
+      fullPath: '/zh-tw/contact'
+      preLoaderRoute: typeof ZhTwContactRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
+    '/zh-tw/about': {
+      id: '/zh-tw/about'
+      path: '/about'
+      fullPath: '/zh-tw/about'
+      preLoaderRoute: typeof ZhTwAboutRouteImport
+      parentRoute: typeof ZhTwRoute
     }
     '/listings/$id': {
       id: '/listings/$id'
@@ -146,14 +270,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh-tw/listings/': {
+      id: '/zh-tw/listings/'
+      path: '/listings'
+      fullPath: '/zh-tw/listings/'
+      preLoaderRoute: typeof ZhTwListingsIndexRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
+    '/zh-tw/listings/$id': {
+      id: '/zh-tw/listings/$id'
+      path: '/listings/$id'
+      fullPath: '/zh-tw/listings/$id'
+      preLoaderRoute: typeof ZhTwListingsIdRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
   }
 }
+
+interface ZhTwRouteChildren {
+  ZhTwAboutRoute: typeof ZhTwAboutRoute
+  ZhTwContactRoute: typeof ZhTwContactRoute
+  ZhTwServicesRoute: typeof ZhTwServicesRoute
+  ZhTwIndexRoute: typeof ZhTwIndexRoute
+  ZhTwListingsIdRoute: typeof ZhTwListingsIdRoute
+  ZhTwListingsIndexRoute: typeof ZhTwListingsIndexRoute
+}
+
+const ZhTwRouteChildren: ZhTwRouteChildren = {
+  ZhTwAboutRoute: ZhTwAboutRoute,
+  ZhTwContactRoute: ZhTwContactRoute,
+  ZhTwServicesRoute: ZhTwServicesRoute,
+  ZhTwIndexRoute: ZhTwIndexRoute,
+  ZhTwListingsIdRoute: ZhTwListingsIdRoute,
+  ZhTwListingsIndexRoute: ZhTwListingsIndexRoute,
+}
+
+const ZhTwRouteWithChildren = ZhTwRoute._addFileChildren(ZhTwRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
+  ZhTwRoute: ZhTwRouteWithChildren,
   ListingsIdRoute: ListingsIdRoute,
   ListingsIndexRoute: ListingsIndexRoute,
 }

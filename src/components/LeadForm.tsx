@@ -6,13 +6,15 @@ import { submitLead } from "../lib/leads.functions";
 type LeadFormProps = {
   compact?: boolean;
   source: "valuation" | "contact";
+  locale?: "en" | "zh-TW";
 };
 
 const fieldClass =
   "mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
 const labelClass = "text-xs font-medium uppercase tracking-[0.18em] text-foreground/70";
 
-export function LeadForm({ compact = false, source }: LeadFormProps) {
+export function LeadForm({ compact = false, source, locale = "en" }: LeadFormProps) {
+  const zh = locale === "zh-TW";
   const submit = useServerFn(submitLead);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -65,7 +67,7 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
       }
     >
       <div className={compact ? "grid gap-4 md:grid-cols-5" : "grid gap-5 sm:grid-cols-2"}>
-        <Field id={fieldId("name")} label="Full Name" name="name" maxLength={100} required />
+        <Field id={fieldId("name")} label={zh ? "姓名" : "Full Name"} name="name" maxLength={100} required />
         <Field
           id={fieldId("email")}
           label="Email"
@@ -74,19 +76,19 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
           maxLength={255}
           required
         />
-        <Field id={fieldId("phone")} label="Phone" name="phone" type="tel" maxLength={40} />
+        <Field id={fieldId("phone")} label={zh ? "電話" : "Phone"} name="phone" type="tel" maxLength={40} />
         {source === "valuation" ? (
           <>
             <Field
               id={fieldId("address")}
-              label="Property Address"
+              label={zh ? "物件地址" : "Property Address"}
               name="propertyAddress"
               maxLength={300}
               required
             />
             <div>
               <label htmlFor={fieldId("type")} className={labelClass}>
-                Property Type
+                {zh ? "物件類型" : "Property Type"}
               </label>
               <select
                 id={fieldId("type")}
@@ -94,17 +96,17 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
                 className={fieldClass}
                 defaultValue="Not sure"
               >
-                <option>Residential</option>
-                <option>Commercial</option>
-                <option>Land</option>
-                <option>Not sure</option>
+                <option value="Residential">{zh ? "住宅" : "Residential"}</option>
+                <option value="Commercial">{zh ? "商用不動產" : "Commercial"}</option>
+                <option value="Land">{zh ? "土地" : "Land"}</option>
+                <option value="Not sure">{zh ? "還不確定" : "Not sure"}</option>
               </select>
             </div>
           </>
         ) : (
           <div>
             <label htmlFor={fieldId("interest")} className={labelClass}>
-              I am interested in
+               {zh ? "我想了解" : "I am interested in"}
             </label>
             <select
               id={fieldId("interest")}
@@ -112,11 +114,11 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
               className={fieldClass}
               defaultValue="General Consultation"
             >
-              <option>Buying</option>
-              <option>Selling</option>
-              <option>Commercial Property</option>
-              <option>Land / Agricultural Property</option>
-              <option>General Consultation</option>
+               <option value="Buying">{zh ? "買房" : "Buying"}</option>
+               <option value="Selling">{zh ? "賣房" : "Selling"}</option>
+               <option value="Commercial Property">{zh ? "商用不動產" : "Commercial Property"}</option>
+               <option value="Land / Agricultural Property">{zh ? "土地／農業地產" : "Land / Agricultural Property"}</option>
+               <option value="General Consultation">{zh ? "一般諮詢" : "General Consultation"}</option>
             </select>
           </div>
         )}
@@ -125,7 +127,7 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
       {source === "contact" ? (
         <div className="mt-5">
           <label htmlFor={fieldId("message")} className={labelClass}>
-            Message
+            {zh ? "想詢問的內容" : "Message"}
           </label>
           <textarea
             id={fieldId("message")}
@@ -133,7 +135,7 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
             rows={5}
             maxLength={2000}
             className={fieldClass}
-            placeholder="Share your situation, timeline, and preferred areas."
+            placeholder={zh ? "歡迎告訴我您的需求、預計時程和偏好區域。" : "Share your situation, timeline, and preferred areas."}
           />
         </div>
       ) : null}
@@ -142,19 +144,19 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
         type="submit"
         size="lg"
         disabled={status === "sending"}
-        className={compact ? "mt-5 w-full rounded-full md:w-auto" : "mt-auto w-full rounded-full"}
+        className={compact ? "mt-5 w-full rounded-full md:w-auto" : `${source === "valuation" ? "mt-6" : "mt-auto"} w-full rounded-full`}
       >
         {status === "sending"
-          ? "Sending…"
+          ? zh ? "傳送中…" : "Sending…"
           : source === "valuation"
-            ? "Get My Free Valuation"
-            : "Send Enquiry"}
+            ? zh ? "取得免費估價" : "Get My Free Valuation"
+            : zh ? "送出詢問" : "Send Enquiry"}
       </Button>
 
       <div aria-live="polite">
         {status === "success" ? (
           <p className="mt-4 text-sm text-foreground/75">
-            Thank you — your request has been received. Tony will be in touch shortly.
+            {zh ? "謝謝您，我們已收到資料，Tony 會儘快與您聯絡。" : "Thank you — your request has been received. Tony will be in touch shortly."}
           </p>
         ) : null}
         {status === "error" ? <p className="mt-4 text-sm text-destructive">{error}</p> : null}
