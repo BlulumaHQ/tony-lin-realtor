@@ -43,7 +43,7 @@ function ListingsPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 pb-16">
+        <section className="mx-auto max-w-7xl px-6 pb-16 pt-8">
           <h2 className="font-serif text-2xl text-foreground">Active</h2>
           <div className="mt-6 grid gap-8 md:grid-cols-2">
             {active.map((l) => <ListingCard key={l.id} listing={l} />)}
