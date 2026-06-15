@@ -5,8 +5,8 @@ import { LeadForm } from "../components/LeadForm";
 import { SocialLinks, SOCIAL } from "../components/SocialLinks";
 import { CONTACT } from "../lib/contact";
 import { Building2, Languages, Mail, Phone } from "lucide-react";
-import instagramQr from "../assets/qr-instagram.png.asset.json";
-import xiaohongshuQr from "../assets/qr-xiaohongshu.png.asset.json";
+import instagramQr from "../assets/qr-instagram.png";
+import xiaohongshuQr from "../assets/qr-xiaohongshu.png";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -92,13 +92,13 @@ function FollowCard() {
     {
       label: "Instagram @tony.lin.realtor",
       href: SOCIAL.instagram,
-      image: instagramQr.url,
+      image: instagramQr,
       alt: "QR code for Tony Lin on Instagram",
     },
     {
       label: "小紅書 RED",
       href: SOCIAL.xiaohongshu,
-      image: xiaohongshuQr.url,
+      image: xiaohongshuQr,
       alt: "QR code for Tony Lin on Xiaohongshu",
     },
   ];

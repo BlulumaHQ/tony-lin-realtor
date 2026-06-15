@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import unilifeLogo from "../assets/unilife-royal-pacific.png.asset.json";
+import unilifeLogo from "../assets/unilife-royal-pacific.png";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 import { AlertsForm } from "./AlertsForm";
 import { SocialLinks } from "./SocialLinks";
@@ -38,7 +38,7 @@ export function SiteFooter({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
               <SocialLinks light />
             </div>
             <img
-              src={unilifeLogo.url}
+              src={unilifeLogo}
               alt="UniLife Realty Inc. — Royal Pacific Realty Group"
               className="mt-8 h-10 w-auto bg-white/95 px-3 py-1 rounded"
             />

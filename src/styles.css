@@ -182,7 +182,7 @@
 
   .luxury-wave-bg {
     background-color: oklch(0.99 0.002 85);
-    background-image: url("/__l5e/assets-v1/08a22618-36ec-41a4-a787-313cb838532e/clean-white-gold-wave.png");
+    background-image: url("./assets/clean-white-gold-wave.png");
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
