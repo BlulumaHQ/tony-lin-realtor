@@ -9,13 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZhTwRouteImport } from './routes/zh-tw'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZhTwIndexRouteImport } from './routes/zh-tw.index'
 import { Route as ListingsIndexRouteImport } from './routes/listings.index'
+import { Route as ZhTwAboutRouteImport } from './routes/zh-tw.about'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 
+const ZhTwRoute = ZhTwRouteImport.update({
+  id: '/zh-tw',
+  path: '/zh-tw',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -36,10 +44,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhTwIndexRoute = ZhTwIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ZhTwRoute,
+} as any)
 const ListingsIndexRoute = ListingsIndexRouteImport.update({
   id: '/listings/',
   path: '/listings/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ZhTwAboutRoute = ZhTwAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => ZhTwRoute,
 } as any)
 const ListingsIdRoute = ListingsIdRouteImport.update({
   id: '/listings/$id',
@@ -52,8 +70,11 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/zh-tw': typeof ZhTwRouteWithChildren
   '/listings/$id': typeof ListingsIdRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
   '/listings/': typeof ListingsIndexRoute
+  '/zh-tw/': typeof ZhTwIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +82,9 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/listings/$id': typeof ListingsIdRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
   '/listings': typeof ListingsIndexRoute
+  '/zh-tw': typeof ZhTwIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +92,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
+  '/zh-tw': typeof ZhTwRouteWithChildren
   '/listings/$id': typeof ListingsIdRoute
+  '/zh-tw/about': typeof ZhTwAboutRoute
   '/listings/': typeof ListingsIndexRoute
+  '/zh-tw/': typeof ZhTwIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,18 +105,32 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/services'
+    | '/zh-tw'
     | '/listings/$id'
+    | '/zh-tw/about'
     | '/listings/'
+    | '/zh-tw/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services' | '/listings/$id' | '/listings'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/listings/$id'
+    | '/zh-tw/about'
+    | '/listings'
+    | '/zh-tw'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
     | '/services'
+    | '/zh-tw'
     | '/listings/$id'
+    | '/zh-tw/about'
     | '/listings/'
+    | '/zh-tw/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -98,12 +138,20 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
+  ZhTwRoute: typeof ZhTwRouteWithChildren
   ListingsIdRoute: typeof ListingsIdRoute
   ListingsIndexRoute: typeof ListingsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zh-tw': {
+      id: '/zh-tw'
+      path: '/zh-tw'
+      fullPath: '/zh-tw'
+      preLoaderRoute: typeof ZhTwRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -132,12 +180,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh-tw/': {
+      id: '/zh-tw/'
+      path: '/'
+      fullPath: '/zh-tw/'
+      preLoaderRoute: typeof ZhTwIndexRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
     '/listings/': {
       id: '/listings/'
       path: '/listings'
       fullPath: '/listings/'
       preLoaderRoute: typeof ListingsIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/zh-tw/about': {
+      id: '/zh-tw/about'
+      path: '/about'
+      fullPath: '/zh-tw/about'
+      preLoaderRoute: typeof ZhTwAboutRouteImport
+      parentRoute: typeof ZhTwRoute
     }
     '/listings/$id': {
       id: '/listings/$id'
@@ -149,11 +211,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ZhTwRouteChildren {
+  ZhTwAboutRoute: typeof ZhTwAboutRoute
+  ZhTwIndexRoute: typeof ZhTwIndexRoute
+}
+
+const ZhTwRouteChildren: ZhTwRouteChildren = {
+  ZhTwAboutRoute: ZhTwAboutRoute,
+  ZhTwIndexRoute: ZhTwIndexRoute,
+}
+
+const ZhTwRouteWithChildren = ZhTwRoute._addFileChildren(ZhTwRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
+  ZhTwRoute: ZhTwRouteWithChildren,
   ListingsIdRoute: ListingsIdRoute,
   ListingsIndexRoute: ListingsIndexRoute,
 }
