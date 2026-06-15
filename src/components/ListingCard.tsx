@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Listing } from "../data/listings";
+import { SoldRibbon } from "./SoldRibbon";
 
 const formatPrice = (price: number) =>
   new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(price);
@@ -16,17 +17,13 @@ export function ListingCard({ listing, locale = "en" }: { listing: Listing; loca
       <article>
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
         <img src={listing.coverImage} alt={listing.address} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy" />
+        {isSold ? <SoldRibbon /> : null}
         <div className="absolute left-4 top-4 flex gap-2">
-          <span
-            className={
-              "rounded-full px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider " +
-              (isSold
-                ? "bg-secondary text-secondary-foreground"
-                : "bg-primary text-primary-foreground")
-            }
-          >
-            {zh ? isSold ? "已售出" : "出售中" : listing.status}
-          </span>
+          {!isSold ? (
+            <span className="rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-primary-foreground">
+              {zh ? "出售中" : listing.status}
+            </span>
+          ) : null}
           <span className="rounded-full bg-white/90 px-3 py-1 text-[0.65rem] font-medium uppercase tracking-wider text-foreground">
             MLS® {listing.mlsNumber}
           </span>
