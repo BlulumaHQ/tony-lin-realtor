@@ -185,21 +185,18 @@
     background-image: url("/__l5e/assets-v1/08a22618-36ec-41a4-a787-313cb838532e/clean-white-gold-wave.png");
     background-position: center bottom;
     background-repeat: no-repeat;
-    background-size: 125% 100%;
+    background-size: cover;
   }
 
   .luxury-wave-sweep {
     background-position: 35% center;
-    background-size: 145% 115%;
   }
 
   .luxury-wave-rise {
     background-position: 65% 35%;
-    background-size: 135% 130%;
   }
 
   .luxury-wave-soft {
     background-position: center 70%;
-    background-size: 115% 90%;
   }
 }
