@@ -3,12 +3,12 @@
 
 A polished, editorial, conversion-focused single-page site (with proper sub-routes) for Tony Lin at UniLife Realty Inc., using the supplied assets and the exact contact + listing data you provided.
 
-## Assets (uploaded → CDN via lovable-assets)
+## Assets (bundled locally with the application)
 - `unilife-realty-royal-pacific-header.png` → UniLife + Royal Pacific lockup (header right, footer)
 - `agent-placeholder-office-logo.jpg` → UniLife mark (secondary use)
 - `tony-lin-realtor.webp` → Tony's portrait (hero + About)
 
-All three uploaded to the CDN as `.asset.json` pointers — production-safe, survives clone/deploy. No temp builder paths.
+All image files are stored under `src/assets` and bundled into production builds. No temporary builder paths or external asset pointers are used.
 
 ## Tech & Production Safety
 - TanStack Start (existing stack), Tailwind v4 tokens defined in `src/styles.css`.
