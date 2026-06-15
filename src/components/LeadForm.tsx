@@ -58,7 +58,11 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={compact ? "" : "flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-sm md:p-10"}
+      className={
+        compact
+          ? ""
+          : `flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-sm md:p-10 ${source === "contact" ? "md:min-h-[44rem]" : ""}`
+      }
     >
       <div className={compact ? "grid gap-4 md:grid-cols-5" : "grid gap-5 sm:grid-cols-2"}>
         <Field id={fieldId("name")} label="Full Name" name="name" maxLength={100} required />
