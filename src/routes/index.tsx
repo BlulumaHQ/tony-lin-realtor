@@ -412,7 +412,7 @@ function MarketAreas() {
   ];
   return (
     <section className="luxury-wave-bg px-6 py-24">
-      <div className="mx-auto grid max-w-7xl items-start gap-12 md:grid-cols-12">
+      <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12 md:items-end">
         <div className="md:col-span-5">
           <p className="section-label">
             <span className="gold-divider mr-3" />
@@ -426,7 +426,7 @@ function MarketAreas() {
             Vancouver West, and Surrey.
           </p>
         </div>
-        <ul className="md:col-span-7 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <ul className="grid grid-cols-2 gap-3 self-end sm:grid-cols-3 md:col-span-7">
           {areas.map((a) => (
             <li
               key={a}

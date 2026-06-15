@@ -33,8 +33,8 @@ function ContactPage() {
       <main>
         <section className="luxury-wave-bg px-6 py-20">
           <div className="mx-auto max-w-7xl">
-          <div className="grid gap-14 md:grid-cols-12">
-            <div className="md:col-span-5">
+          <div className="grid items-stretch gap-14 md:grid-cols-12">
+            <div className="flex h-full flex-col md:col-span-5">
               <p className="section-label">
                 <span className="gold-divider mr-3" />
                 Contact
@@ -47,7 +47,7 @@ function ContactPage() {
                 For time-sensitive enquiries, call directly.
               </p>
 
-              <div className="mt-10 space-y-4">
+              <div className="mt-10 flex flex-1 flex-col justify-between gap-4">
                 <ContactBlock icon={Phone} label="Direct" value={CONTACT.phone} href={CONTACT.phoneHref} />
                 <ContactBlock
                   icon={Mail}
@@ -74,7 +74,7 @@ function ContactPage() {
               </div>
             </div>
 
-            <div className="md:col-span-7">
+            <div className="h-full md:col-span-7">
               <LeadForm source="contact" />
             </div>
           </div>
