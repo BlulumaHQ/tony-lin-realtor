@@ -181,12 +181,24 @@
   }
 
   .luxury-wave-bg {
+    position: relative;
     background-color: oklch(0.99 0.002 85);
-    background-image:
-      linear-gradient(90deg, oklch(0.99 0.002 85) 0%, oklch(0.99 0.002 85) 48%, transparent 76%),
-      url("/__l5e/assets-v1/08a22618-36ec-41a4-a787-313cb838532e/clean-white-gold-wave.png");
-    background-position: center, left bottom;
+    background-image: url("/__l5e/assets-v1/08a22618-36ec-41a4-a787-313cb838532e/clean-white-gold-wave.png");
+    background-position: left bottom;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .luxury-wave-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: min(58rem, 68%);
+    background: linear-gradient(90deg, oklch(0.99 0.002 85) 0 70%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .luxury-wave-bg > * {
+    position: relative;
   }
 }
