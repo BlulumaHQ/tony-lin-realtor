@@ -138,7 +138,7 @@ export function LeadForm({ compact = false, source }: LeadFormProps) {
         type="submit"
         size="lg"
         disabled={status === "sending"}
-        className={compact ? "mt-5 w-full rounded-full md:w-auto" : "mt-auto w-full rounded-full pt-7"}
+        className={compact ? "mt-5 w-full rounded-full md:w-auto" : "mt-auto w-full rounded-full"}
       >
         {status === "sending"
           ? "Sending…"
