@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import unilifeLogo from "../assets/unilife-royal-pacific.png";
+import tonyLinLogo from "../assets/tony-lin-logo.svg";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 import { AlertsForm } from "./AlertsForm";
 import { SocialLinks } from "./SocialLinks";
@@ -27,9 +28,9 @@ export function SiteFooter({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
         </div>
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <p className="font-serif text-2xl">Tony Lin</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.28em] text-primary">
-              REALTOR<sup>®</sup> · {CONTACT.brokerage}
+            <img src={tonyLinLogo} alt="Tony Lin REALTOR®" className="h-14 w-auto brightness-0 invert" />
+            <p className="mt-3 text-xs uppercase tracking-[0.28em] text-primary">
+              {CONTACT.brokerage}
             </p>
             <p className="mt-6 text-sm text-white/70">
                {zh ? "提供 Greater Vancouver 商用不動產、住宅與土地買賣服務，可使用 English 或國語溝通。" : "Greater Vancouver real estate representation across commercial, residential, and land. English & 國語 service."}

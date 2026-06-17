@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1766.33 525">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #eab36b;
+        stroke-miterlimit: 10;
+        stroke-width: 2.06px;
+      }
+
+      .cls-2 {
+        letter-spacing: .48em;
+      }
+
+      .cls-3 {
+        letter-spacing: .5em;
+      }
+
+      .cls-4 {
+        letter-spacing: .3em;
+      }
+
+      .cls-5 {
+        letter-spacing: .38em;
+      }
+
+      .cls-6 {
+        letter-spacing: .28em;
+      }
+
+      .cls-7, .cls-8 {
+        fill: #5b5b5c;
+      }
+
+      .cls-9 {
+        font-family: CormorantGaramond-SemiBold, 'Cormorant Garamond';
+        font-size: 167px;
+        font-weight: 600;
+      }
+
+      .cls-9, .cls-10 {
+        fill: #515252;
+      }
+
+      .cls-8 {
+        font-family: Castilon-Regular, Castilon;
+        font-size: 510.51px;
+        letter-spacing: .21em;
+      }
+
+      .cls-10 {
+        font-family: CeraPro-Medium, 'Cera Pro';
+        font-size: 66.19px;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+  <g>
+    <text class="cls-8" transform="translate(43.26 475.27) scale(.9 1)"><tspan x="0" y="0">T</tspan></text>
+    <path class="cls-7" d="M378.53,465.57h-38.9v-197.28l-64.53-71.98v247.82c0,21.95-6.41,28.59-19.68,31.14h198.63l13.73-69.94c-15.56,35.23-28.83,60.24-89.24,60.24Z"/>
+  </g>
+  <text class="cls-10" transform="translate(917.14 462.7)"><tspan class="cls-3" x="0" y="0">REA</tspan><tspan class="cls-5" x="222.53" y="0">L</tspan><tspan class="cls-2" x="281.44" y="0">T</tspan><tspan class="cls-3" x="352.13" y="0">OR</tspan></text>
+  <text class="cls-9" transform="translate(598.5 328.52)"><tspan class="cls-6" x="0" y="0">T</tspan><tspan class="cls-4" x="154.31" y="0">ONY LIN</tspan></text>
+  <line class="cls-1" x1="610.56" y1="379.63" x2="1707.03" y2="379.63"/>
+</svg>
