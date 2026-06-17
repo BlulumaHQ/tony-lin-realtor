@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Globe2 } from "lucide-react";
 import unilifeLogo from "../assets/unilife-royal-pacific.png";
+import tonyLinLogo from "../assets/tony-lin-logo.svg";
 import { CONTACT } from "../lib/contact";
 
 const nav = [
