@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import unilifeLogo from "../assets/unilife-royal-pacific.png";
+import tonyLinLogo from "../assets/tony-lin-logo.svg";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 import { AlertsForm } from "./AlertsForm";
 import { SocialLinks } from "./SocialLinks";
