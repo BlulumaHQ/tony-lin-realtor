@@ -42,7 +42,7 @@ export function SiteHeader({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
       </div>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <Link to={isZh ? "/zh-tw" : "/"} className="flex items-center" aria-label="Tony Lin REALTOR®">
-          <img src={tonyLinLogo} alt="Tony Lin REALTOR®" className="h-10 w-auto md:h-12" />
+          <img src={tonyLinLogo} alt="Tony Lin REALTOR®" className="h-14 w-auto md:h-16" />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
