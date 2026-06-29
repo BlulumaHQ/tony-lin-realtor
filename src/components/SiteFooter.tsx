@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import unilifeLogo from "../assets/unilife-royal-pacific.png";
-import tonyLinLogo from "../assets/tony-lin-logo.svg";
+import tonyLinLogo from "../assets/tony-lin-logo-light.svg";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 import { AlertsForm } from "./AlertsForm";
 import { SocialLinks } from "./SocialLinks";
@@ -28,7 +28,7 @@ export function SiteFooter({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
         </div>
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <img src={tonyLinLogo} alt="Tony Lin REALTOR®" className="h-20 w-auto brightness-0 invert" />
+            <img src={tonyLinLogo} alt="Tony Lin REALTOR®" className="h-20 w-auto" />
             <p className="mt-3 text-xs uppercase tracking-[0.28em] text-primary">
               {CONTACT.brokerage}
             </p>

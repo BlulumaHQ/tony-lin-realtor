@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Globe2 } from "lucide-react";
+import { Globe2, Instagram } from "lucide-react";
 import unilifeLogo from "../assets/unilife-royal-pacific.png";
-import tonyLinLogo from "../assets/tony-lin-logo.svg";
+import tonyLinLogo from "../assets/tony-lin-logo-dark.svg";
 import { CONTACT } from "../lib/contact";
+import { SOCIAL } from "./SocialLinks";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -30,13 +31,36 @@ export function SiteHeader({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
           <a href={CONTACT.phoneHref} className="font-medium hover:text-primary">
             {CONTACT.phone}
           </a>
-          <div className="inline-flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.16em]" aria-label="Site language">
-            <Globe2 className="size-3.5 text-primary" aria-hidden />
-             <Link to="/" className={`${isZh ? "text-foreground/40 hover:text-foreground/65" : "text-foreground"} transition-colors duration-150`}>EN</Link>
+          <div className="inline-flex items-center gap-3">
+            <a
+              href={SOCIAL.instagram}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="text-foreground/70 transition-colors hover:text-primary"
+            >
+              <Instagram className="size-4" aria-hidden />
+            </a>
+            <a
+              href={SOCIAL.xiaohongshu}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Xiaohongshu RED"
+              className="inline-flex items-center"
+            >
+              <span className="rounded bg-destructive px-1 py-0.5 text-[0.55rem] font-bold text-destructive-foreground">
+                小紅書
+              </span>
+            </a>
             <span className="h-3 w-px bg-border" aria-hidden />
-             <Link to="/zh-tw" className={`${isZh ? "text-foreground" : "text-foreground/40 hover:text-foreground/65"} transition-colors duration-150`}>
-              中文
-             </Link>
+            <div className="inline-flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.16em]" aria-label="Site language">
+              <Globe2 className="size-3.5 text-primary" aria-hidden />
+              <Link to="/" className={`${isZh ? "text-foreground/40 hover:text-foreground/65" : "text-foreground"} transition-colors duration-150`}>EN</Link>
+              <span className="h-3 w-px bg-border" aria-hidden />
+              <Link to="/zh-tw" className={`${isZh ? "text-foreground" : "text-foreground/40 hover:text-foreground/65"} transition-colors duration-150`}>
+                中文
+              </Link>
+            </div>
           </div>
         </div>
       </div>
