@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1808.11 525">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .3em;
+      }
+
+      .cls-2 {
+        letter-spacing: .26em;
+      }
+
+      .cls-3 {
+        letter-spacing: .8em;
+      }
+
+      .cls-4 {
+        fill: #010617;
+      }
+
+      .cls-5, .cls-6 {
+        fill: #b48a3e;
+      }
+
+      .cls-6 {
+        font-family: CeraPro-Medium, 'Cera Pro';
+        font-size: 70.78px;
+        font-weight: 500;
+      }
+
+      .cls-7 {
+        fill: none;
+        stroke: #b48a3e;
+        stroke-miterlimit: 10;
+        stroke-width: 4.98px;
+      }
+
+      .cls-8 {
+        fill: #061b36;
+      }
+
+      .cls-9 {
+        letter-spacing: .79em;
+      }
+
+      .cls-10 {
+        letter-spacing: .67em;
+      }
+
+      .cls-11 {
+        fill: #515252;
+        font-family: Audrey-Normal, Audrey;
+        font-size: 173.58px;
+      }
+    </style>
+  </defs>
+  <text class="cls-6" transform="translate(835.8 454.89)"><tspan class="cls-3" x="0" y="0">REA</tspan><tspan class="cls-10" x="301.65" y="0">L</tspan><tspan class="cls-9" x="385.88" y="0">T</tspan><tspan class="cls-3" x="482.7" y="0">OR</tspan></text>
+  <text class="cls-11" transform="translate(536.85 315.92)"><tspan class="cls-2" x="0" y="0">T</tspan><tspan class="cls-1" x="168.89" y="0">ONY LIN</tspan></text>
+  <line class="cls-7" x1="547.96" y1="430.29" x2="775.5" y2="430.29"/>
+  <g>
+    <path class="cls-8" d="M13.62,69.01h268.36s-.04,44.68-.04,44.68l-97.36.06.03,130.58v46.6s-66.95,50.77-66.95,50.77c-.18-11.38-.21-22.99-.11-34.36.54-64.44-.77-129.13.07-193.54-34.34-.5-69.69-.11-104.09-.07-.46-13.94-.04-30.58.1-44.72Z"/>
+    <path class="cls-8" d="M232.73,200.09c21.93,10.71,43.66,22.77,65.58,33.64l-.08,203.43,145.03-.02c.11,12.45.1,24.91-.03,37.36l-210.8.07.3-274.46Z"/>
+    <path class="cls-8" d="M179.02,304.82c1.9-1.52,3.08-2.63,5.31-3.64.57,3.88.29,15.48.28,19.97l-.03,37.43.03,75.27c0,13.2.29,27.57-.08,40.65l-67.03.05.08-123.15c20.25-14.71,41.51-31.3,61.44-46.58Z"/>
+    <path class="cls-4" d="M179.02,304.82c1.9-1.52,3.08-2.63,5.31-3.64-.2,2.15.08,3.04-1.07,4.58-1.47.26-2.94-.25-4.24-.94Z"/>
+    <path class="cls-5" d="M215.86,161.32c5.54,2.41,13.98,7.06,19.59,9.93l39.34,20.13,130.99,67.31.03,8.24c-21.81-10.28-47.05-24.17-68.76-35.34l-121.28-61.97.09-8.29Z"/>
+  </g>
+  <line class="cls-7" x1="1540.32" y1="430.29" x2="1767.86" y2="430.29"/>
+</svg>
