@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Globe2 } from "lucide-react";
+import { Globe2, Instagram } from "lucide-react";
 import unilifeLogo from "../assets/unilife-royal-pacific.png";
-import tonyLinLogo from "../assets/tony-lin-logo.svg";
+import tonyLinLogo from "../assets/tony-lin-logo-dark.svg";
 import { CONTACT } from "../lib/contact";
+import { SOCIAL } from "./SocialLinks";
 
 const nav = [
   { to: "/", label: "Home" },
