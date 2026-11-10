@@ -118,6 +118,7 @@ export function LeadForm({ compact = false, source, locale = "en" }: LeadFormPro
                <option value="Selling">{zh ? "賣房" : "Selling"}</option>
                <option value="Commercial Property">{zh ? "商用不動產" : "Commercial Property"}</option>
                <option value="Land / Agricultural Property">{zh ? "土地／農業地產" : "Land / Agricultural Property"}</option>
+               <option value="Construction & Development">{zh ? "建築與地產開發" : "Construction & Development"}</option>
                <option value="General Consultation">{zh ? "一般諮詢" : "General Consultation"}</option>
             </select>
           </div>

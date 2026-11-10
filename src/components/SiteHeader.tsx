@@ -10,6 +10,7 @@ const nav = [
   { to: "/listings", label: "Listings" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/construction", label: "Construction" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -18,6 +19,7 @@ const zhNav = [
   { to: "/zh-tw/listings", label: "房源" },
   { to: "/zh-tw/about", label: "關於 Tony" },
   { to: "/zh-tw/services", label: "服務項目" },
+  { to: "/zh-tw/construction", label: "建築開發" },
   { to: "/zh-tw/contact", label: "聯絡" },
 ] as const;
 
@@ -69,7 +71,7 @@ export function SiteHeader({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
           <img src={tonyLinLogo} alt="Tony Lin REALTOR®" className="h-14 w-auto md:h-16" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex lg:gap-8">
            {activeNav.map((item) => (
             <Link
               key={item.to}
@@ -93,7 +95,7 @@ export function SiteHeader({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
       </div>
 
       {/* Mobile nav */}
-      <nav aria-label="Mobile" className="flex items-center justify-center gap-5 border-t border-border/60 px-4 py-2 md:hidden">
+      <nav aria-label="Mobile" className="flex items-center justify-start gap-4 overflow-x-auto whitespace-nowrap border-t border-border/60 px-4 py-2 sm:justify-center md:hidden">
          {activeNav.map((item) => (
           <Link
             key={item.to}

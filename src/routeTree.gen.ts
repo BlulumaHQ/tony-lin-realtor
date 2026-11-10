@@ -12,12 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ZhTwRouteImport } from './routes/zh-tw'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConstructionRouteImport } from './routes/construction'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ZhTwIndexRouteImport } from './routes/zh-tw.index'
 import { Route as ListingsIndexRouteImport } from './routes/listings.index'
 import { Route as ZhTwServicesRouteImport } from './routes/zh-tw.services'
 import { Route as ZhTwContactRouteImport } from './routes/zh-tw.contact'
+import { Route as ZhTwConstructionRouteImport } from './routes/zh-tw.construction'
 import { Route as ZhTwAboutRouteImport } from './routes/zh-tw.about'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 import { Route as ZhTwListingsIndexRouteImport } from './routes/zh-tw.listings.index'
@@ -36,6 +38,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionRoute = ConstructionRouteImport.update({
+  id: '/construction',
+  path: '/construction',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -68,6 +75,11 @@ const ZhTwContactRoute = ZhTwContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => ZhTwRoute,
 } as any)
+const ZhTwConstructionRoute = ZhTwConstructionRouteImport.update({
+  id: '/construction',
+  path: '/construction',
+  getParentRoute: () => ZhTwRoute,
+} as any)
 const ZhTwAboutRoute = ZhTwAboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -92,11 +104,13 @@ const ZhTwListingsIdRoute = ZhTwListingsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/zh-tw': typeof ZhTwRouteWithChildren
   '/listings/$id': typeof ListingsIdRoute
   '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/construction': typeof ZhTwConstructionRoute
   '/zh-tw/contact': typeof ZhTwContactRoute
   '/zh-tw/services': typeof ZhTwServicesRoute
   '/listings/': typeof ListingsIndexRoute
@@ -107,10 +121,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/listings/$id': typeof ListingsIdRoute
   '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/construction': typeof ZhTwConstructionRoute
   '/zh-tw/contact': typeof ZhTwContactRoute
   '/zh-tw/services': typeof ZhTwServicesRoute
   '/listings': typeof ListingsIndexRoute
@@ -122,11 +138,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
   '/zh-tw': typeof ZhTwRouteWithChildren
   '/listings/$id': typeof ListingsIdRoute
   '/zh-tw/about': typeof ZhTwAboutRoute
+  '/zh-tw/construction': typeof ZhTwConstructionRoute
   '/zh-tw/contact': typeof ZhTwContactRoute
   '/zh-tw/services': typeof ZhTwServicesRoute
   '/listings/': typeof ListingsIndexRoute
@@ -139,11 +157,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/construction'
     | '/contact'
     | '/services'
     | '/zh-tw'
     | '/listings/$id'
     | '/zh-tw/about'
+    | '/zh-tw/construction'
     | '/zh-tw/contact'
     | '/zh-tw/services'
     | '/listings/'
@@ -154,10 +174,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/construction'
     | '/contact'
     | '/services'
     | '/listings/$id'
     | '/zh-tw/about'
+    | '/zh-tw/construction'
     | '/zh-tw/contact'
     | '/zh-tw/services'
     | '/listings'
@@ -168,11 +190,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/construction'
     | '/contact'
     | '/services'
     | '/zh-tw'
     | '/listings/$id'
     | '/zh-tw/about'
+    | '/zh-tw/construction'
     | '/zh-tw/contact'
     | '/zh-tw/services'
     | '/listings/'
@@ -184,6 +208,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ConstructionRoute: typeof ConstructionRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
   ZhTwRoute: typeof ZhTwRouteWithChildren
@@ -212,6 +237,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction': {
+      id: '/construction'
+      path: '/construction'
+      fullPath: '/construction'
+      preLoaderRoute: typeof ConstructionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -256,6 +288,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhTwContactRouteImport
       parentRoute: typeof ZhTwRoute
     }
+    '/zh-tw/construction': {
+      id: '/zh-tw/construction'
+      path: '/construction'
+      fullPath: '/zh-tw/construction'
+      preLoaderRoute: typeof ZhTwConstructionRouteImport
+      parentRoute: typeof ZhTwRoute
+    }
     '/zh-tw/about': {
       id: '/zh-tw/about'
       path: '/about'
@@ -289,6 +328,7 @@ declare module '@tanstack/react-router' {
 
 interface ZhTwRouteChildren {
   ZhTwAboutRoute: typeof ZhTwAboutRoute
+  ZhTwConstructionRoute: typeof ZhTwConstructionRoute
   ZhTwContactRoute: typeof ZhTwContactRoute
   ZhTwServicesRoute: typeof ZhTwServicesRoute
   ZhTwIndexRoute: typeof ZhTwIndexRoute
@@ -298,6 +338,7 @@ interface ZhTwRouteChildren {
 
 const ZhTwRouteChildren: ZhTwRouteChildren = {
   ZhTwAboutRoute: ZhTwAboutRoute,
+  ZhTwConstructionRoute: ZhTwConstructionRoute,
   ZhTwContactRoute: ZhTwContactRoute,
   ZhTwServicesRoute: ZhTwServicesRoute,
   ZhTwIndexRoute: ZhTwIndexRoute,
@@ -310,6 +351,7 @@ const ZhTwRouteWithChildren = ZhTwRoute._addFileChildren(ZhTwRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ConstructionRoute: ConstructionRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
   ZhTwRoute: ZhTwRouteWithChildren,
@@ -319,3 +361,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

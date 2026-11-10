@@ -80,6 +80,16 @@ function ServicesPage() {
                 </div>
               </article>
             ))}
+            <Link to="/construction" className="group rounded-2xl border border-border bg-card p-8 transition hover:border-primary hover:shadow-lg">
+              <div className="flex items-start gap-5">
+                <span className="font-serif text-3xl text-primary">06</span>
+                <div>
+                  <h2 className="font-serif text-2xl text-foreground">Construction &amp; Development</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">For owners exploring redevelopment or co-development of land or older property, through the separate LHL Homes brand.</p>
+                  <span className="mt-4 inline-block text-sm font-medium text-primary group-hover:underline">Learn more →</span>
+                </div>
+              </div>
+            </Link>
           </div>
 
           <div className="mt-14 rounded-3xl border border-border bg-[color:var(--charcoal)] p-10 text-[color:var(--ivory)] md:p-14">
