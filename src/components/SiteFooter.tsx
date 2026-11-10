@@ -99,6 +99,11 @@ export function SiteFooter({ locale = "en" }: { locale?: "en" | "zh-TW" }) {
                 </Link>
               </li>
               <li>
+                 <Link to={zh ? "/zh-tw/construction" : "/construction"} className="hover:text-primary">
+                   {zh ? "建築開發" : "Construction"}
+                </Link>
+              </li>
+              <li>
                  <Link to={`${base}/contact`} className="hover:text-primary">
                    {zh ? "聯絡" : "Contact"}
                 </Link>
