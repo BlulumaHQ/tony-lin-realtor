@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import heroImage from "../assets/construction-hero.jpg";
-import lhlLogo from "../assets/lhl-logo-desktop-white.svg.asset.json";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 
@@ -85,7 +84,7 @@ export function ConstructionPage({ locale = "en" }: { locale?: "en" | "zh-TW" })
 
         <section aria-label="LHL Homes" className="bg-charcoal px-6 py-10 text-ivory md:py-12">
           <div className="mx-auto flex max-w-7xl flex-col items-start gap-7 md:flex-row md:items-center md:gap-12">
-            <img src={lhlLogo.url} alt={t.logoAlt} width={139} height={60} className="h-auto w-36 max-w-full shrink-0 md:w-44" />
+            <img src="/lhl-logo-desktop-white.svg" alt={t.logoAlt} width={139} height={60} className="h-auto w-36 max-w-full shrink-0 md:w-44" />
             <div className="max-w-xl border-t border-ivory/20 pt-6 md:border-t-0 md:border-l md:py-2 md:pl-12">
               <p className="text-sm font-medium">Legacy Harmony Living Group</p>
               <p className="mt-2 text-sm leading-relaxed text-ivory/80">{t.brandNote}</p>
