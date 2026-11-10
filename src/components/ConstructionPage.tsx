@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import heroImage from "../assets/construction-hero.jpg";
+import lhlLogo from "../assets/lhl-logo-desktop-white.svg.asset.json";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
 
@@ -13,6 +14,8 @@ const copy = {
     intro:
       "If you own land or an older property and are exploring redevelopment, you can learn about development options through LHL Homes (Legacy Harmony Living Group), a separate brand focused on multi-generational multiplex living in Vancouver.",
     alt: "Modern multiplex residence with timber and stone facade in a leafy Vancouver neighbourhood",
+    logoAlt: "LHL Homes — Legacy Harmony Living Group logo",
+    brandNote: "A separate brand focused on multi-generational multiplex living in Vancouver.",
     sectionsLabel: "Development Approaches",
     sectionsTitle: "Three ways LHL Homes describes working with property owners.",
     sections: [
@@ -33,6 +36,8 @@ const copy = {
     intro:
       "如果您手上有土地或舊房，正在考慮重建或開發，可以透過 LHL Homes（Legacy Harmony Living Group）進一步了解開發方案。LHL Homes 是獨立品牌，專注於 Vancouver 的多代同堂 multiplex 住宅。",
     alt: "位於 Vancouver 綠意社區、木材與石材外牆的現代 multiplex 住宅",
+    logoAlt: "LHL Homes — Legacy Harmony Living Group 品牌標誌",
+    brandNote: "獨立品牌，專注於 Vancouver 的多代同堂 multiplex 住宅。",
     sectionsLabel: "開發方式",
     sectionsTitle: "LHL Homes 與屋主、地主合作的三種方式。",
     sections: [
@@ -74,6 +79,16 @@ export function ConstructionPage({ locale = "en" }: { locale?: "en" | "zh-TW" })
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
                 <img src={heroImage} alt={t.alt} className="aspect-[4/3] w-full object-cover" width={1600} height={1000} />
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-label="LHL Homes" className="bg-charcoal px-6 py-10 text-ivory md:py-12">
+          <div className="mx-auto flex max-w-7xl flex-col items-start gap-7 md:flex-row md:items-center md:gap-12">
+            <img src={lhlLogo.url} alt={t.logoAlt} width={139} height={60} className="h-auto w-36 max-w-full shrink-0 md:w-44" />
+            <div className="max-w-xl border-t border-ivory/20 pt-6 md:border-t-0 md:border-l md:py-2 md:pl-12">
+              <p className="text-sm font-medium">Legacy Harmony Living Group</p>
+              <p className="mt-2 text-sm leading-relaxed text-ivory/80">{t.brandNote}</p>
             </div>
           </div>
         </section>
