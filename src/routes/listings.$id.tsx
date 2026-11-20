@@ -3,14 +3,14 @@ import { ListingGallery } from "../components/ListingGallery";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { Button } from "../components/ui/button";
-import { getListingById } from "../data/listings";
+import { getListing } from "../lib/listings.functions";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 
 const formatPrice = (price: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(price);
 
 export const Route = createFileRoute("/listings/$id")({
-  loader: ({ params }) => {
-    const listing = getListingById(params.id);
+  loader: async ({ params }) => {
+    const listing = await getListing({ data: params.id });
     if (!listing) throw notFound();
     return listing;
   },

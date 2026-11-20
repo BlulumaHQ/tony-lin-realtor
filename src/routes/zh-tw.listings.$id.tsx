@@ -3,14 +3,14 @@ import { ListingGallery } from "../components/ListingGallery";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { Button } from "../components/ui/button";
-import { getListingById } from "../data/listings";
+import { getListing } from "../lib/listings.functions";
 import { CONTACT } from "../lib/contact";
 import { listingZh, ZH_DISCLAIMER } from "../lib/zh-tw";
 
 const formatPrice = (price: number) => new Intl.NumberFormat("zh-TW", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(price);
 
 export const Route = createFileRoute("/zh-tw/listings/$id")({
-  loader: ({ params }) => { const listing = getListingById(params.id); if (!listing) throw notFound(); return listing; },
+  loader: async ({ params }) => { const listing = await getListing({ data: params.id }); if (!listing) throw notFound(); return listing; },
   head: ({ loaderData }) => ({
     meta: loaderData ? [{ title: `${loaderData.address}｜Tony Lin 房源` }, { name: "description", content: `${listingZh[loaderData.id]?.category || loaderData.category}，位於 ${loaderData.neighbourhood}，售價 ${formatPrice(loaderData.price)}，MLS® ${loaderData.mlsNumber}。` }, { property: "og:title", content: `${loaderData.address}｜精選物件` }, { property: "og:description", content: (listingZh[loaderData.id]?.description || loaderData.description).slice(0, 155) }, { property: "og:image", content: loaderData.coverImage }, { property: "og:url", content: `/zh-tw/listings/${loaderData.id}` }] : [],
     links: loaderData ? [{ rel: "canonical", href: `/zh-tw/listings/${loaderData.id}` }, { rel: "alternate", hrefLang: "en-CA", href: `/listings/${loaderData.id}` }, { rel: "alternate", hrefLang: "zh-Hant", href: `/zh-tw/listings/${loaderData.id}` }] : [],

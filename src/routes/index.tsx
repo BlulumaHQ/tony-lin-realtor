@@ -6,12 +6,13 @@ import { ListingCard } from "../components/ListingCard";
 import { SoldRibbon } from "../components/SoldRibbon";
 import { LeadForm } from "../components/LeadForm";
 import { Button } from "../components/ui/button";
-import { listings } from "../data/listings";
+import { getListings } from "../lib/listings.functions";
 import { CONTACT, DISCLAIMER } from "../lib/contact";
 import commercialFeature from "../assets/commercial-feature.jpg";
 import residentialFeature from "../assets/residential-feature.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: () => getListings(),
   head: () => ({
     meta: [
       { title: "Tony Lin REALTOR® | UniLife Realty Inc. | Greater Vancouver" },
@@ -237,6 +238,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function FeaturedListings() {
+  const listings = Route.useLoaderData();
   return (
     <section id="listings" className="bg-card/60 py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -443,6 +445,7 @@ function MarketAreas() {
 }
 
 function RecentResults() {
+  const listings = Route.useLoaderData();
   const sold = listings.find((listing) => listing.isFeaturedResult);
   if (!sold) return null;
 

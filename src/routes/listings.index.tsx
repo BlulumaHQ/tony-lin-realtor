@@ -2,10 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
-import { listings } from "../data/listings";
+import { getListings } from "../lib/listings.functions";
 import { DISCLAIMER } from "../lib/contact";
 
 export const Route = createFileRoute("/listings/")({
+  loader: () => getListings(),
   head: () => ({
     meta: [
       { title: "Listings — Tony Lin REALTOR® | UniLife Realty Inc." },
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/listings/")({
 });
 
 function ListingsPage() {
+  const listings = Route.useLoaderData();
   const active = listings.filter((l) => l.status === "Active");
   const sold = listings.filter((l) => l.status === "Sold");
   return (

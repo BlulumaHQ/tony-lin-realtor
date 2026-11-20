@@ -7,10 +7,11 @@ import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
 import { LeadForm } from "../components/LeadForm";
 import { Button } from "../components/ui/button";
-import { listings } from "../data/listings";
+import { getListings } from "../lib/listings.functions";
 import { CONTACT } from "../lib/contact";
 
 export const Route = createFileRoute("/zh-tw/")({
+  loader: () => getListings(),
   head: () => ({
     meta: [
       { title: "Tony Lin 大溫哥華房地產經紀｜住宅、商用不動產與土地" },
@@ -30,6 +31,7 @@ export const Route = createFileRoute("/zh-tw/")({
 });
 
 function ChineseHome() {
+  const listings = Route.useLoaderData();
   return <div className="min-h-dvh"><SiteHeader locale="zh-TW" /><main>
     <section className="img-hero"><div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-12 md:py-28">
       <div className="md:col-span-7"><p className="section-label"><span className="gold-divider mr-3" />Greater Vancouver · UniLife Realty Inc.</p>
