@@ -33,7 +33,7 @@ async function rest<T>(path: string): Promise<T> {
   const res = await fetch(`${CENTRAL_URL}/rest/v1/${path}`, {
     headers: { apikey: CENTRAL_KEY, Authorization: `Bearer ${CENTRAL_KEY}` },
   });
-  if (!res.ok) throw new Error(`central ${path} ${res.status}`);
+  if (!res.ok) throw new Error(`central ${path} ${res.status} ${(await res.text()).slice(0, 200)}`);
   return res.json() as Promise<T>;
 }
 
@@ -115,7 +115,7 @@ export async function loadListings(): Promise<Listing[]> {
     }
     return out.length ? out : staticListings;
   } catch (error) {
-    console.error("Central listings unavailable, using static data", error);
+    console.error("Central listings unavailable, using static data", String(error), (error as Error)?.stack);
     return staticListings;
   }
 }
