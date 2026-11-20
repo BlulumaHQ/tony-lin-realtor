@@ -23,7 +23,7 @@ type Row = {
   lot_size: string | null;
   mls_number: string | null;
   description: string | null;
-  features: string[] | null;
+  features: unknown;
   primary_image_url: string | null;
   sort_order: number | null;
 };
@@ -46,6 +46,13 @@ function categoryLabel(r: Row) {
   return r.property_type || "Residential";
 }
 
+function toList(v: unknown): string[] {
+  if (Array.isArray(v)) return v.map(String);
+  if (typeof v === "string") return v.split(/\n|•|;/).map((x) => x.trim()).filter(Boolean);
+  if (v && typeof v === "object") return Object.values(v as Record<string, unknown>).map(String);
+  return [];
+}
+
 function fromRow(r: Row, photos: string[]): Listing {
   const cover = r.primary_image_url || photos[0] || "";
   return {
@@ -63,7 +70,7 @@ function fromRow(r: Row, photos: string[]): Listing {
     sqft: r.sqft ?? undefined,
     lotSize: r.lot_size ?? undefined,
     propertyType: r.property_type || "",
-    highlights: (r.features || []).slice(0, 5),
+    highlights: toList(r.features).slice(0, 5),
     description: r.description || "",
     listedBy: "UniLife Realty Inc.",
     coverImage: cover,
