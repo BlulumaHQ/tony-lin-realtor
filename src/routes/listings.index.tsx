@@ -3,7 +3,7 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { ListingCard } from "../components/ListingCard";
 import { getListings } from "../lib/listings.functions";
-import { DISCLAIMER } from "../lib/contact";
+import { DDF_STATEMENT, DISCLAIMER } from "../lib/contact";
 
 export const Route = createFileRoute("/listings/")({
   loader: () => getListings(),
@@ -63,6 +63,7 @@ function ListingsPage() {
 
         <section className="mx-auto max-w-7xl px-6 pb-20">
           <p className="text-xs leading-relaxed text-muted-foreground">{DISCLAIMER}</p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{DDF_STATEMENT}</p>
         </section>
       </main>
       <SiteFooter />

@@ -15,3 +15,7 @@ export const CONTACT = {
 
 export const DISCLAIMER =
   "Listing information is based on publicly available data from UniLife Realty Inc. and Realtylink.org. MLS®, REALTOR®, and related marks are controlled by The Canadian Real Estate Association. Listing details should be independently verified before making real estate decisions.";
+
+// CREA DDF® display rule for Member Feed / National Shared Pool websites. Keep verbatim (English on all locales).
+export const DDF_STATEMENT =
+  "This REALTOR.ca listing content is owned and licensed by REALTOR® members of The Canadian Real Estate Association.";

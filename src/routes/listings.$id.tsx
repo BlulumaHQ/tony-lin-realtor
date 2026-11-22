@@ -4,7 +4,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { Button } from "../components/ui/button";
 import { getListing } from "../lib/listings.functions";
-import { CONTACT, DISCLAIMER } from "../lib/contact";
+import { CONTACT, DDF_STATEMENT, DISCLAIMER } from "../lib/contact";
 
 const formatPrice = (price: number) => new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 }).format(price);
 
@@ -56,7 +56,7 @@ function ListingDetailPage() {
           <h2 className="mt-12 font-serif text-3xl">Property highlights</h2><ul className="mt-5 space-y-3">{listing.highlights.map((item: string) => <li key={item} className="flex gap-3 text-foreground/75"><span className="mt-2 h-px w-5 shrink-0 bg-primary" />{item}</li>)}</ul>
           <h2 className="mt-12 font-serif text-3xl">About this property</h2><p className="mt-5 leading-8 text-foreground/75">{listing.description}</p>
         </div>
-        <aside className="md:col-span-4"><div className="rounded-2xl border border-border bg-card p-7"><h2 className="font-serif text-2xl">Property details</h2><dl className="mt-6 divide-y divide-border">{visibleDetails.map(([label, value]) => <div key={label} className="flex justify-between gap-5 py-3 text-sm"><dt className="text-muted-foreground">{label}</dt><dd className="text-right font-medium">{value}</dd></div>)}</dl><p className="mt-6 text-sm">Listed by {listing.listedBy}</p><p className="mt-3 text-xs leading-relaxed text-muted-foreground">{DISCLAIMER}</p></div></aside>
+        <aside className="md:col-span-4"><div className="rounded-2xl border border-border bg-card p-7"><h2 className="font-serif text-2xl">Property details</h2><dl className="mt-6 divide-y divide-border">{visibleDetails.map(([label, value]) => <div key={label} className="flex justify-between gap-5 py-3 text-sm"><dt className="text-muted-foreground">{label}</dt><dd className="text-right font-medium">{value}</dd></div>)}</dl><p className="mt-6 text-sm">Listed by {listing.listedBy}</p><p className="mt-3 text-xs leading-relaxed text-muted-foreground">{DISCLAIMER}</p><p className="mt-2 text-xs leading-relaxed text-muted-foreground">{DDF_STATEMENT}</p></div></aside>
       </div>
       <div className="luxury-wave-bg luxury-wave-sweep mt-16 rounded-3xl border border-border p-8 md:p-12"><h2 className="font-serif text-3xl">Interested in this property?</h2><p className="mt-3 text-foreground/75">Get clear answers and arrange a private consultation.</p><div className="mt-7 flex flex-wrap gap-3"><Button asChild size="lg"><Link to="/contact">Book a Consultation</Link></Button><Button asChild size="lg" variant="outline"><a href={CONTACT.phoneHref}>Call {CONTACT.phone}</a></Button><Button asChild size="lg" variant="outline"><Link to="/" hash="valuation">Request a Valuation</Link></Button></div></div>
     </section>
