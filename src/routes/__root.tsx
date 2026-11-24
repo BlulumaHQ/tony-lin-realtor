@@ -114,12 +114,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:image",
         content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/898aed6e-bd2a-45de-bdfd-0d475dd9596d/id-preview-7771cb7d--525031ca-39b1-486c-ac52-6557e7ba8394.lovable.app-1780776641183.png",
+          "https://tony-lin-realtor.sony-40b.workers.dev/og-image.jpg",
       },
       {
         name: "twitter:image",
         content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/898aed6e-bd2a-45de-bdfd-0d475dd9596d/id-preview-7771cb7d--525031ca-39b1-486c-ac52-6557e7ba8394.lovable.app-1780776641183.png",
+          "https://tony-lin-realtor.sony-40b.workers.dev/og-image.jpg",
       },
     ],
     links: [
